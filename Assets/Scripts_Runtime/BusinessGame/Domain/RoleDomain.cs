@@ -14,11 +14,16 @@ public static class RoleDomain {
 
         GameObject go = GameObject.Instantiate(prefab);
         RoleEntity role = go.GetComponent<RoleEntity>();
-
+        role.isRole = false;
         role.Ctor();
-        role.id = ctx.gameEntity.roleRecordID++;
+        role.id = ctx.gameEntity.roleRecordID;
+        ctx.gameEntity.roleRecordID++;
         ctx.roleRespository.Add(role);
         return role;
 
+    }
+
+    public static void Move(GameContext ctx,RoleEntity role, Vector2 dir,float dt) {
+        role.Move(dir,dt);
     }
 }

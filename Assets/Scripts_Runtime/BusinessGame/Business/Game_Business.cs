@@ -5,8 +5,7 @@ using UnityEngine;
 
 public static class Game_Business {
     public static void New_Game(GameContext ctx) {
-        
-        Debug.Log("Game_Business Init");
+
         RoleDomain.Spawn(ctx);
     }
 
@@ -47,7 +46,17 @@ public static class Game_Business {
         ctx.moduleInput.ProcessMove();
     }
 
-    static void LogicFix(GameContext ctx, float dt) { }
+    static void LogicFix(GameContext ctx, float dt) {
+        // role 
+
+        int roleLen = ctx.roleRespository.TakeAll(out RoleEntity[] roles);
+        for (int i = 0; i < roleLen; i++) {
+            RoleEntity role = roles[i];
+            RoleDomain.Move(ctx, role, ctx.moduleInput.moveAxis,dt);
+        }
+
+
+    }
 
     static void LateTick(GameContext ctx, float dt) { }
 }
