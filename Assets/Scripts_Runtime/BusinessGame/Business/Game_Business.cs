@@ -8,8 +8,7 @@ public static class Game_Business {
 
         RoleDomain.Spawn(ctx);
 
-        // BulletDomain.Spawn(ctx, new Vector2(1, 5));
-    }   
+    }
 
     public static void Load_Game(GameContext ctx) {
 
@@ -54,9 +53,19 @@ public static class Game_Business {
         int roleLen = ctx.roleRespository.TakeAll(out RoleEntity[] roles);
         for (int i = 0; i < roleLen; i++) {
             RoleEntity role = roles[i];
-            RoleDomain.Move(ctx, role, ctx.moduleInput.moveAxis,dt);
+            RoleDomain.Move(ctx, role, ctx.moduleInput.moveAxis, dt);
             RoleFSMConteoller.Tick(ctx, role, dt);
+            RoleDomain.ToSpawnBullet(ctx, role, dt);
 
+        }
+
+
+        // bullet
+        int bulletLen = ctx.bulletRespository.TakeAll(out BulletEntity[] bullets);
+        for (int i = 0; i < bulletLen; i++) {
+
+            BulletEntity bullet = bullets[i];
+                BulletDomain.Move(ctx, bullet, dt);
         }
 
 
