@@ -14,7 +14,6 @@ public static class RoleDomain {
 
         GameObject go = GameObject.Instantiate(prefab);
         RoleEntity role = go.GetComponent<RoleEntity>();
-        role.isRole = false;
         role.Ctor();
         role.id = ctx.gameEntity.roleRecordID;
         ctx.gameEntity.roleRecordID++;

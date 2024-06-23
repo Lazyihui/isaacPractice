@@ -4,8 +4,10 @@ using UnityEngine.UI;
 
 public class RoleEntity : MonoBehaviour {
 
+
     [SerializeField] Rigidbody2D rb;
 
+    [SerializeField] public Animator animatior;
     [SerializeField] float moveSpeed = 1;
 
 
@@ -13,15 +15,16 @@ public class RoleEntity : MonoBehaviour {
 
     public bool isRole;
 
+    // 状态机
+    public RoleFSMStatus status;
 
-
-    public RoleEntity() { }
+    public bool idle_isEntering;
 
     public void Ctor() {
 
     }
 
-    public void Move(Vector2 dir,float dt) {
+    public void Move(Vector2 dir, float dt) {
 
         // var velo = rb.velocity;
         // velo = dir * moveSpeed;
@@ -33,7 +36,10 @@ public class RoleEntity : MonoBehaviour {
         transform.position = pos;
     }
 
-
+    public void Enter_Idle() {
+        status = RoleFSMStatus.Idle;
+        idle_isEntering = true;
+    }
 
 }
 
