@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 7525119537304753187}
   - component: {fileID: 7597146645307237497}
   m_Layer: 0
-  m_Name: RoleEntity
+  m_Name: Role_Entity
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

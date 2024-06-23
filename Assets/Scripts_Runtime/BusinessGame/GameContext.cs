@@ -10,6 +10,8 @@ public class GameContext {
     // Respostory
     public RoleRespository roleRespository;
 
+    public BulletRespository bulletRespository;
+
 
     // inject
     public ModuleInput moduleInput;
@@ -19,8 +21,11 @@ public class GameContext {
 
 
     public GameContext() {
-        roleRespository = new RoleRespository();
         gameEntity = new GameEntity();
+
+
+        roleRespository = new RoleRespository();
+        bulletRespository = new BulletRespository();
     }
 
 

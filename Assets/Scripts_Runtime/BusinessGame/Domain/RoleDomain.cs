@@ -5,7 +5,7 @@ using UnityEngine;
 public static class RoleDomain {
 
     public static RoleEntity Spawn(GameContext ctx) {
-        bool has = ctx.assetsContext.TryGetEntity("RoleEntity", out GameObject prefab);
+        bool has = ctx.assetsContext.TryGetEntity("Role_Entity", out GameObject prefab);
 
         if (!has) {
             Debug.LogError("RoleEntity not found");

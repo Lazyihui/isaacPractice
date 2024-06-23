@@ -7,7 +7,9 @@ public static class Game_Business {
     public static void New_Game(GameContext ctx) {
 
         RoleDomain.Spawn(ctx);
-    }
+
+        // BulletDomain.Spawn(ctx, new Vector2(1, 5));
+    }   
 
     public static void Load_Game(GameContext ctx) {
 
