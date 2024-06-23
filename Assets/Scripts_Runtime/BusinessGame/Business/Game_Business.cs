@@ -65,7 +65,8 @@ public static class Game_Business {
         for (int i = 0; i < bulletLen; i++) {
 
             BulletEntity bullet = bullets[i];
-                BulletDomain.Move(ctx, bullet, dt);
+
+            BulletDomain.Move(ctx, bullet, dt);
         }
 
 

@@ -28,20 +28,25 @@ public static class RoleDomain {
 
     public static void ToSpawnBullet(GameContext ctx, RoleEntity role, float dt) {
 
+
         if (Input.GetKeyDown(KeyCode.UpArrow)) {
             BulletEntity bullet = BulletDomain.Spawn(ctx, role.transform.position);
+            bullet.dir = 1;
         }
 
         if (Input.GetKeyDown(KeyCode.DownArrow)) {
             BulletEntity bullet = BulletDomain.Spawn(ctx, role.transform.position);
+            bullet.dir = 0;
         }
 
         if (Input.GetKeyDown(KeyCode.LeftArrow)) {
             BulletEntity bullet = BulletDomain.Spawn(ctx, role.transform.position);
+            bullet.dir = 2;
         }
 
         if (Input.GetKeyDown(KeyCode.RightArrow)) {
             BulletEntity bullet = BulletDomain.Spawn(ctx, role.transform.position);
+            bullet.dir = 3;
         }
 
 

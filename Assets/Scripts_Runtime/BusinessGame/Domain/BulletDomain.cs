@@ -23,22 +23,6 @@ public static class BulletDomain {
     }
 
     public static void Move(GameContext ctx, BulletEntity bullet, float dt) {
-        Vector2 face = ctx.moduleInput.faceAxis;
-
-
-        if (face == Vector2.up) {
-            bullet.dir = 1;
-
-        }
-        if (face == Vector2.down) {
-            bullet.dir = 0;
-        }
-        if (face == Vector2.left) {
-            bullet.dir = 2;
-        }
-        if (face == Vector2.right) {
-            bullet.dir = 3;
-        }
 
         if(bullet.dir == 0) {
             bullet.Move(Vector2.down, dt);
