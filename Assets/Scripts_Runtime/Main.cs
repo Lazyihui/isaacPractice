@@ -7,7 +7,19 @@ public class Main : MonoBehaviour {
     MainContex ctx;
     void Awake() {
         ctx = new MainContex();
-        Debug.Log("Hello World!");
+
+        // === init===
+
+        // === Load===
+        ModuleAssets.Load(ctx.assetsContext);
+
+        // === Inject===
+        ctx.Inject();
+
+        // new game
+        Game_Business.New_Game(ctx.gameContext);
+
+
     }
 
     void Update() {

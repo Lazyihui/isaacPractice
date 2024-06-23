@@ -4,8 +4,10 @@ using UnityEngine;
 
 
 public static class Game_Business {
-    public static void New_Game() {
+    public static void New_Game(GameContext ctx) {
+        
         Debug.Log("Game_Business Init");
+        RoleDomain.Spawn(ctx);
     }
 
     public static void Load_Game(GameContext ctx) {
@@ -41,7 +43,9 @@ public static class Game_Business {
     }
 
 
-    static void PreTick(GameContext ctx, float dt) { }
+    static void PreTick(GameContext ctx, float dt) {
+        ctx.moduleInput.ProcessMove();
+    }
 
     static void LogicFix(GameContext ctx, float dt) { }
 

@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class GameContext {
 
-   public GameEntity gameEntity;
+    public GameEntity gameEntity;
 
 
     // Respostory
     public RoleRespository roleRespository;
+
+
+    // inject
+    public ModuleInput moduleInput;
+
+    public AssetsContext assetsContext;
 
 
 
@@ -18,6 +24,9 @@ public class GameContext {
     }
 
 
-    public void Inject() { }
+    public void Inject(ModuleInput input, AssetsContext assets) {
+        this.moduleInput = input;
+        this.assetsContext = assets;
+    }
 
 }
