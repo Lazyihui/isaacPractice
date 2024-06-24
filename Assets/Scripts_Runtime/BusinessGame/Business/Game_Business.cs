@@ -71,6 +71,8 @@ public static class Game_Business {
             BulletEntity bullet = bullets[i];
 
             BulletDomain.Move(ctx, bullet, dt);
+
+            BulletDomain.BeyondBoundary(ctx, bullet);
         }
 
 
