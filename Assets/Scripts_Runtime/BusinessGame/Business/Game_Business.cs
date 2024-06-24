@@ -72,7 +72,9 @@ public static class Game_Business {
 
             BulletDomain.Move(ctx, bullet, dt);
 
-            BulletDomain.BeyondBoundary(ctx, bullet);
+            BulletDomain.BeyondBoundaryToUnSpawn(ctx, bullet);
+
+            BulletDomain.MoveDistanceToUnSpawn(ctx, bullet, dt);
         }
 
 

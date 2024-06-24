@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stageID: 1
-  ground: {fileID: 0}
+  ground: {fileID: 4562963750861125755}
 --- !u!1 &8953000042013657061
 GameObject:
   m_ObjectHideFlags: 0

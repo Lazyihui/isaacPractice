@@ -14,7 +14,12 @@ public static class BulletDomain {
         BulletEntity bullet = go.GetComponent<BulletEntity>();
         bullet.Ctor();
         bullet.SetPos(pos);
+        bullet.SetRB(RigidbodyType2D.Kinematic);
         bullet.dir = 0;
+        bullet.moveDistance = 0;
+        bullet.maxDistance = 7;
+
+        bullet.intervalTimer = 5;
 
         bullet.id = ctx.gameEntity.bulletRecordID;
         ctx.gameEntity.bulletRecordID++;
@@ -47,7 +52,7 @@ public static class BulletDomain {
         bullet.TearDown();
     }
 
-    public static void BeyondBoundary(GameContext ctx, BulletEntity bullet) {
+    public static void BeyondBoundaryToUnSpawn(GameContext ctx, BulletEntity bullet) {
         Vector2 pos = bullet.transform.position;
         if (pos.x < -13 || pos.x > 13) {
             UnSpawn(ctx, bullet);
@@ -55,6 +60,24 @@ public static class BulletDomain {
         if (pos.y > 8.5 || pos.y < -6) {
             UnSpawn(ctx, bullet);
         }
+    }
+
+
+    public static void MoveDistanceToUnSpawn(GameContext ctx, BulletEntity bullet, float dt) {
+
+        bullet.moveDistance += bullet.moveSpeed * dt;
+        if (bullet.moveDistance >= bullet.maxDistance) {
+
+
+            bullet.SetRB(RigidbodyType2D.Dynamic);
+
+            bullet.intervalTimer -= dt;
+            if (bullet.intervalTimer <= 0) {
+                UnSpawn(ctx, bullet);
+            }
+
+        }
 
     }
+
 }
