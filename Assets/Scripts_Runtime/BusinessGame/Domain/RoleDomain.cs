@@ -32,7 +32,7 @@ public static class RoleDomain {
     public static void ToSpawnBullet(GameContext ctx, RoleEntity role, float dt) {
 
         role.intervalTimer -= dt;
-        
+
         if (role.intervalTimer <= 0) {
 
             if (Input.GetKeyDown(KeyCode.UpArrow)) {
@@ -63,9 +63,16 @@ public static class RoleDomain {
 
             }
 
+
         }
 
+    }
 
+    public static void UnSpawn(GameContext ctx, RoleEntity role) {
+        ctx.roleRespository.Remove(role);
+        role.TearDown();
+    }
 
+    public static void EnterNextLevel(GameObject ctx, RoleEntity role) {
     }
 }

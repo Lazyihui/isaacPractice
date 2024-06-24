@@ -24,4 +24,13 @@ public static class MapDomain {
         return map;
 
     }
+
+    public static void TearDown(GameContext ctx, MapEntity map) {
+        ctx.mapRespository.Remove(map);
+        map.TearDown();
+    }
+
+
+    
+
 }

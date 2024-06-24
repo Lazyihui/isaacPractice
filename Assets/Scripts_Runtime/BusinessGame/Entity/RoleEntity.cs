@@ -57,5 +57,9 @@ public class RoleEntity : MonoBehaviour {
         idle_isEntering = true;
     }
 
+    public void TearDown(){
+        GameObject.Destroy(this.gameObject);
+    }
+
 }
 

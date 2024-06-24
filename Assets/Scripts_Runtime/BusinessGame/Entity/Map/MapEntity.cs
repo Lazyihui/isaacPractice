@@ -16,4 +16,8 @@ public class MapEntity : MonoBehaviour {
         this.grid = grid;
     }
 
+    public void TearDown() {
+        GameObject.Destroy(this.gameObject);
+    }
+
 }
