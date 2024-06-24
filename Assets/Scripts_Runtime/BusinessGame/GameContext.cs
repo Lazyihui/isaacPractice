@@ -12,6 +12,8 @@ public class GameContext {
 
     public BulletRespository bulletRespository;
 
+    public MapRespository mapRespository;
+
 
     // inject
     public ModuleInput moduleInput;
@@ -26,6 +28,7 @@ public class GameContext {
 
         roleRespository = new RoleRespository();
         bulletRespository = new BulletRespository();
+        mapRespository = new MapRespository();
     }
 
 

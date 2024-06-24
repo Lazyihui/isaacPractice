@@ -18,6 +18,17 @@ public static class ModuleAssets {
             ctx.entityPtr = ptr;
 
         }
+        {
+            AssetLabelReference labelReference = new AssetLabelReference();
+            labelReference.labelString = "MapGrid";
+            var ptr = Addressables.LoadAssetsAsync<GameObject>(labelReference, null);
+            var list = ptr.WaitForCompletion();
+            foreach (var go in list) {
+                MapGridElement mapGrid = go.GetComponent<MapGridElement>();
+                ctx.maps.Add(mapGrid.stageID, mapGrid);
+            }
+            ctx.mapPtr = ptr;
+        }
         // {
         //     AssetLabelReference labelReference = new AssetLabelReference();
         //     labelReference.labelString = "Panel";
@@ -35,6 +46,9 @@ public static class ModuleAssets {
     public static void Unload(AssetsContext ctx) {
         if (ctx.entityPtr.IsValid()) {
             Addressables.Release(ctx.entityPtr);
+        }
+        if (ctx.mapPtr.IsValid()) {
+            Addressables.Release(ctx.mapPtr);
         }
         // if (ctx.panelPtr.IsValid()) {
         //     Addressables.Release(ctx.panelPtr);

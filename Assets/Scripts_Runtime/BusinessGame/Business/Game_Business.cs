@@ -8,6 +8,9 @@ public static class Game_Business {
 
         RoleDomain.Spawn(ctx);
 
+        // map
+        MapDomain.Spawn(ctx, 1);
+
     }
 
     public static void Load_Game(GameContext ctx) {

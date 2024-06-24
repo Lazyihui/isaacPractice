@@ -10,13 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
-  m_Name: Packed Assets1
+  m_Name: Map
   m_EditorClassIdentifier: 
-  m_GroupName: Packed Assets1
+  m_GroupName: Map
   m_Data:
     m_SerializedData: []
   m_GUID: 8adc2b0193079834cae9ad5318ac50e2
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: b378f47eaf8ff964283baa1eabe7d5b9
+    m_Address: Grid_Stage1
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - MapGrid
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: e5254b1df25cd434bb2af38936243e4e, type: 2}
   m_SchemaSet:
