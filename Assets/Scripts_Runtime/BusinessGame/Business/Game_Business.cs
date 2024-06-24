@@ -55,6 +55,7 @@ public static class Game_Business {
             RoleEntity role = roles[i];
             RoleDomain.Move(ctx, role, ctx.moduleInput.moveAxis, dt);
             RoleFSMConteoller.Tick(ctx, role, dt);
+            
             RoleDomain.ToSpawnBullet(ctx, role, dt);
 
         }

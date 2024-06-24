@@ -20,6 +20,22 @@ public class RoleEntity : MonoBehaviour {
 
     public bool idle_isEntering;
 
+
+
+
+    // 植物的cd
+    public float cd;
+
+    public float maxCd;
+
+    public float maintain;
+
+    public float maintainTimer;
+
+    public float interval;
+
+    public float intervalTimer;
+
     public void Ctor() {
 
     }
