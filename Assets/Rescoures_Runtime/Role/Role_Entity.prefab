@@ -149,6 +149,12 @@ MonoBehaviour:
   isRole: 0
   status: 0
   idle_isEntering: 0
+  cd: 0
+  maxCd: 0
+  maintain: 0
+  maintainTimer: 0
+  interval: 0
+  intervalTimer: 0
 --- !u!1 &7887053341220334026
 GameObject:
   m_ObjectHideFlags: 0
@@ -246,7 +252,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 5986909737524308568, guid: 711533ab388b29d4c834314226cec5ec, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -29,6 +29,21 @@ public static class RoleFSMConteoller {
             role.Enter_Idle();
         }
 
+        Vector2 moveDir = ctx.moduleInput.moveAxis;
+        if (moveDir.x > 0) {
+            role.animatior.Play("right");
+        } else if (moveDir.x < 0) {
+            role.animatior.Play("left");
+        }else if (moveDir.y > 0) {
+            role.animatior.Play("back");
+        }
+
+        if(moveDir.x == 0 && moveDir.y == 0) {
+            role.Enter_Idle();
+        }
+
+
+
 
     }
 
