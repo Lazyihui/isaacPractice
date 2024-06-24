@@ -42,14 +42,10 @@ public class RoleEntity : MonoBehaviour {
 
     public void Move(Vector2 dir, float dt) {
 
-        // var velo = rb.velocity;
-        // velo = dir * moveSpeed;
-        // rb.velocity = velo;
-        // Debug.Log(dir); 
+        var velo = rb.velocity;
+        velo = dir * moveSpeed;
+        rb.velocity = velo;
 
-        Vector2 pos = transform.position;
-        pos += dir * moveSpeed * dt;
-        transform.position = pos;
     }
 
     public void Enter_Idle() {

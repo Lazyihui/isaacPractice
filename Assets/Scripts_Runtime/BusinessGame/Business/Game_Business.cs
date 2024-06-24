@@ -11,6 +11,9 @@ public static class Game_Business {
         // map
         MapDomain.Spawn(ctx, 1);
 
+        PropEntity prop = PropDomain.Spawn(ctx, new Vector2(1, 1));
+        prop.isEnter = true;
+
     }
 
     public static void Load_Game(GameContext ctx) {
@@ -58,7 +61,7 @@ public static class Game_Business {
             RoleEntity role = roles[i];
             RoleDomain.Move(ctx, role, ctx.moduleInput.moveAxis, dt);
             RoleFSMConteoller.Tick(ctx, role, dt);
-            
+
             RoleDomain.ToSpawnBullet(ctx, role, dt);
 
         }
@@ -77,7 +80,11 @@ public static class Game_Business {
             BulletDomain.MoveDistanceToUnSpawn(ctx, bullet, dt);
         }
 
-
+        int propLen = ctx.propRespository.TakeAll(out PropEntity[] props);
+        for (int i = 0; i < propLen; i++) {
+            PropEntity prop = props[i];
+            PropDomain.BoolisTrigger(ctx, prop);
+        }   
     }
 
     static void LateTick(GameContext ctx, float dt) { }
