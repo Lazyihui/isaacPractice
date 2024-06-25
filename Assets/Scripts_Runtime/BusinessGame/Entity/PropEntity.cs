@@ -10,7 +10,7 @@ public class PropEntity : MonoBehaviour {
 
     public int id;
 
-
+    public int typeID;
     // 入口
     public bool isEnter;
 

@@ -115,7 +115,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cld2D: {fileID: 8438102353864588736}
+  sprRd: {fileID: 4052288852642682084}
   id: 0
+  typeID: 0
   isEnter: 0
   isObstacle: 0
 --- !u!1 &4484926633796558665

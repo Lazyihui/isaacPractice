@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f370b68e7335deb44829b42ea1da5802, type: 3}
   m_Name: TM_Prop_Enter
   m_EditorClassIdentifier: 
-  TypeID: 0
-  sprite: {fileID: 0}
+  typeID: 0
+  sprite: {fileID: 2490714984483242547, guid: 07907da5bd663624aa97cb4127fda5ce, type: 3}
+  isEnter: 1
+  isObstacle: 0

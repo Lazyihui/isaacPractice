@@ -23,6 +23,6 @@ public class MainContex {
     }
 
     public void Inject() {
-        gameContext.Inject(moduleInput, assetsContext);
+        gameContext.Inject(moduleInput, assetsContext,templateContext);
      }
 }

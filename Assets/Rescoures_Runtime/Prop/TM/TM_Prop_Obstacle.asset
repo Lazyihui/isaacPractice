@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   typeID: 1
   sprite: {fileID: -5940014709222713881, guid: 07907da5bd663624aa97cb4127fda5ce, type: 3}
+  isEnter: 0
+  isObstacle: 1

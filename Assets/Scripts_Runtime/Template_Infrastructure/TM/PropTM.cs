@@ -7,4 +7,9 @@ public class PropTM : ScriptableObject {
 
     public int typeID;
     public Sprite sprite;
+
+    public bool isEnter;
+    public bool isObstacle;
+
+
 }
