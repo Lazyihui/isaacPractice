@@ -6,6 +6,8 @@ public class PropEntity : MonoBehaviour {
 
     [SerializeField] Collider2D cld2D;
 
+    [SerializeField] SpriteRenderer sprRd;
+
     public int id;
 
 
@@ -27,6 +29,10 @@ public class PropEntity : MonoBehaviour {
         cld2D.isTrigger = isTrigger;
     }
 
+    public void SetSprite(Sprite sprite) {
+        sprRd.sprite = sprite;
+    }
+    
     public void TearDown() {
         GameObject.Destroy(this.gameObject);
     }

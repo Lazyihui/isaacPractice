@@ -5,6 +5,7 @@ using UnityEngine;
 public class Main : MonoBehaviour {
 
     MainContex ctx;
+    bool isTearDown = false;
     void Awake() {
         ctx = new MainContex();
 
@@ -26,5 +27,21 @@ public class Main : MonoBehaviour {
         float dt = Time.deltaTime;
 
         Game_Business.Tick(ctx.gameContext, dt);
+    }
+    void OnDestory() {
+        TearDown();
+    }
+
+    void OnApplicationQuit() {
+        TearDown();
+    }
+
+    void TearDown() {
+        if (isTearDown) {
+            return;
+        }
+        isTearDown = true;
+        // === Unload===
+        ModuleAssets.Unload(ctx.assetsContext);
     }
 }
