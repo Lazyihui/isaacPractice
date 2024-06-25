@@ -13,10 +13,12 @@ public class MainContex {
 
     public AssetsContext assetsContext;
 
+    public TemplateContext templateContext;
     public MainContex() {
         gameContext = new GameContext();
         moduleInput = new ModuleInput();
         assetsContext = new AssetsContext();
+        templateContext = new TemplateContext();
 
     }
 

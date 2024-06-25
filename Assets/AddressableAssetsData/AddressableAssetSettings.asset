@@ -15,7 +15,7 @@ MonoBehaviour:
   m_DefaultGroup: e7b0a495ec5052b4bb482304bdf4b81f
   m_currentHash:
     serializedVersion: 2
-    Hash: 00000000000000000000000000000000
+    Hash: e4037b642fdae1a6a2032ca943f81465
   m_OptimizeCatalogSize: 0
   m_BuildRemoteCatalog: 0
   m_BundleLocalCatalog: 0
@@ -48,6 +48,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 504759428fcc1a843b2ce3dd2b48287d, type: 2}
   - {fileID: 11400000, guid: c4bfd11e436986640b9aa429ddcb9d5c, type: 2}
   - {fileID: 11400000, guid: 5baf1e754e139c84aa927e9ce4692759, type: 2}
+  - {fileID: 11400000, guid: 89bd8fd391fda174498e4b44f88634df, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -91,6 +92,7 @@ MonoBehaviour:
     - default
     - Entity
     - MapGrid
+    - TM_Prop
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: f9d20247a2554df4eb768569d2ad36ef, type: 2}

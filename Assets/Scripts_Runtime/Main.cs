@@ -8,11 +8,13 @@ public class Main : MonoBehaviour {
     bool isTearDown = false;
     void Awake() {
         ctx = new MainContex();
+        
 
         // === init===
 
         // === Load===
         ModuleAssets.Load(ctx.assetsContext);
+        TemplateInfra.Load(ctx.templateContext);
 
         // === Inject===
         ctx.Inject();
@@ -43,5 +45,6 @@ public class Main : MonoBehaviour {
         isTearDown = true;
         // === Unload===
         ModuleAssets.Unload(ctx.assetsContext);
+        TemplateInfra.Unload(ctx.templateContext);
     }
 }
