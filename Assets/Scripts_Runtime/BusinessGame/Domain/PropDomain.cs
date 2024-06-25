@@ -32,4 +32,19 @@ public static class PropDomain {
         }
 
     }
+
+    public static void ToSpawnIsTriggerProp(GameContext ctx) {
+        PropEntity prop = Spawn(ctx, new Vector2(-13, 1));
+        prop.isEnter = true;
+        PropEntity prop1 = Spawn(ctx, new Vector2(-1f, 8.5f));
+        prop1.isEnter = true;
+        PropEntity prop2 = Spawn(ctx, new Vector2(13, 1));
+        prop2.isEnter = true;
+        PropEntity prop3 = Spawn(ctx, new Vector2(0, -7));
+        prop3.isEnter = true;
+        PropEntity prop4 = Spawn(ctx, new Vector2(13, -0.5f));
+        prop4.isEnter = true;
+        PropEntity prop5 = Spawn(ctx, new Vector2(-13, -0.5f));
+        prop5.isEnter = true;
+    }
 }
