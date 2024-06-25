@@ -12,6 +12,9 @@ public class PropEntity : MonoBehaviour {
     public int id;
 
     public int typeID;
+
+    // 1 表示上面 2 表示下面 3 表示左边 4 表示右边
+    public int nextLevelID;
     // 入口
     public bool isEnter;
 
@@ -33,7 +36,7 @@ public class PropEntity : MonoBehaviour {
     public void SetSprite(Sprite sprite) {
         sprRd.sprite = sprite;
     }
-    
+
     public void TearDown() {
         GameObject.Destroy(this.gameObject);
     }

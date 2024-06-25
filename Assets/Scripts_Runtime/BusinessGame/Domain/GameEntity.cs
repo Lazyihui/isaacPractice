@@ -15,11 +15,14 @@ public class GameEntity{
 
     public int propRecordID;    
 
+    public int nextLevelID;
+
     public GameEntity() {
         restFixTime = 0;
         roleRecordID = 0;
         bulletRecordID = 0;
         mapRecordID = 0;
         propRecordID = 0;
+        nextLevelID =0;
     }
 }

@@ -53,7 +53,10 @@ public class RoleEntity : MonoBehaviour {
         idle_isEntering = true;
     }
 
-    public void TearDown(){
+    public void SetPos(Vector2 pos) {
+        transform.position = pos;
+    }
+    public void TearDown() {
         GameObject.Destroy(this.gameObject);
     }
 

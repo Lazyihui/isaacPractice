@@ -58,8 +58,11 @@ public static class Game_Business {
     }
 
     static void LogicFix(GameContext ctx, float dt) {
-        // role 
+        if(Input.GetKeyDown(KeyCode.Space)) {
+            Debug.Log(ctx.gameEntity.nextLevelID);
+        }
 
+        // role 
         int roleLen = ctx.roleRespository.TakeAll(out RoleEntity[] roles);
         for (int i = 0; i < roleLen; i++) {
             RoleEntity role = roles[i];
