@@ -41,6 +41,15 @@ public class RoleRespository {
             action(item);
         }
     }
+    public RoleEntity Find(Predicate<RoleEntity> predicate) {
+        foreach (RoleEntity role in all.Values) {
+            bool isMatch = predicate(role);
 
+            if (isMatch) {
+                return role;
+            }
+        }
+        return null;
+    }
 
 }

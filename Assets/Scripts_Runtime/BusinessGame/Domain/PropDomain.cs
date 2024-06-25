@@ -13,7 +13,7 @@ public static class PropDomain {
             return null;
         }
 
-        
+
 
         GameObject go = GameObject.Instantiate(prefab);
         PropEntity prop = go.GetComponent<PropEntity>();
@@ -62,5 +62,30 @@ public static class PropDomain {
         prop.SetSprite(tm.sprite);
         prop.isEnter = tm.isEnter;
         prop.isObstacle = tm.isObstacle;
+    }
+
+    static void OnTriggerEnter(PropEntity prop, Collider2D other) {
+        Debug.Log("Enter");
+        if (other.gameObject.CompareTag("Role")) {
+            Debug.Log("Role Enter");
+        }
+
+    }
+    public static void EnterNextLevel(GameContext ctx, PropEntity prop) {
+        int roleLen = ctx.roleRespository.TakeAll(out RoleEntity[] roles);
+        if(prop.isObstacle ){
+            return;
+        }
+
+        for (int i = 0; i < roleLen; i++) {
+            RoleEntity role = roles[i];
+            float dirSqr = Vector2.SqrMagnitude(role.transform.position - prop.transform.position);
+            if(dirSqr<0.5f){
+                Debug.Log("Enter Next Level");
+            }
+
+
+        }
+
     }
 }

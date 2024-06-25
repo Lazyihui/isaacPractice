@@ -8,6 +8,7 @@ public class PropEntity : MonoBehaviour {
 
     [SerializeField] SpriteRenderer sprRd;
 
+
     public int id;
 
     public int typeID;
@@ -36,5 +37,6 @@ public class PropEntity : MonoBehaviour {
     public void TearDown() {
         GameObject.Destroy(this.gameObject);
     }
+
 
 }

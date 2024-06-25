@@ -87,9 +87,9 @@ public static class Game_Business {
         int propLen = ctx.propRespository.TakeAll(out PropEntity[] props);
         for (int i = 0; i < propLen; i++) {
             PropEntity prop = props[i];
-            Debug.Log(prop.isEnter);
             PropDomain.BoolisTrigger(ctx, prop);
             PropDomain.SetSprite(ctx, prop);
+            PropDomain.EnterNextLevel(ctx, prop);
         }
     }
 
