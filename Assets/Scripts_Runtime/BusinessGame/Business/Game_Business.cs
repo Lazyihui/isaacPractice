@@ -13,7 +13,7 @@ public static class Game_Business {
 
         PropDomain.ToSpawnIsTriggerProp(ctx);
 
-        PropEntity tem =  PropDomain.Spawn(ctx, new Vector2(-3, 1), 1);
+        PropEntity tem = PropDomain.Spawn(ctx, new Vector2(-3, 1), 1);
         tem.isObstacle = true;
         // 后面用TM写
 
@@ -58,7 +58,7 @@ public static class Game_Business {
     }
 
     static void LogicFix(GameContext ctx, float dt) {
-        if(Input.GetKeyDown(KeyCode.Space)) {
+        if (Input.GetKeyDown(KeyCode.Space)) {
             Debug.Log(ctx.gameEntity.nextLevelID);
         }
 
@@ -87,6 +87,11 @@ public static class Game_Business {
             BulletDomain.MoveDistanceToUnSpawn(ctx, bullet, dt);
         }
 
+
+
+
+
+
         int propLen = ctx.propRespository.TakeAll(out PropEntity[] props);
         for (int i = 0; i < propLen; i++) {
             PropEntity prop = props[i];
@@ -94,6 +99,18 @@ public static class Game_Business {
             PropDomain.SetSprite(ctx, prop);
             PropDomain.EnterNextLevel(ctx, prop);
         }
+
+        // 清除全部
+
+        if (Input.GetKeyDown(KeyCode.C)) {
+            Debug.Log("CloseAll");
+            RoleDomain.CloseAll(ctx);
+            BulletDomain.CloseAll(ctx);
+            PropDomain.CloseAll(ctx);
+            MapDomain.CloseAll(ctx);
+        }
+
+
     }
 
     static void LateTick(GameContext ctx, float dt) { }

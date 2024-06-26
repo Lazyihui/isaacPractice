@@ -28,6 +28,11 @@ public static class PropDomain {
 
     }
 
+    public static void UnSpawn(GameContext ctx, PropEntity prop) {
+        ctx.propRespository.Remove(prop);
+        prop.TearDown();
+    }
+
     public static void BoolisTrigger(GameContext ctx, PropEntity prop) {
         if (prop.isEnter) {
             prop.SetCollider(true);
@@ -88,7 +93,6 @@ public static class PropDomain {
             RoleEntity role = roles[i];
             float dirSqr = Vector2.SqrMagnitude(role.transform.position - prop.transform.position);
             if (dirSqr < 0.5f) {
-                Debug.Log("Enter Next Level");
                 switch (prop.nextLevelID) {
                     case 1:
                     ctx.gameEntity.nextLevelID = 1;
@@ -110,5 +114,12 @@ public static class PropDomain {
 
         }
 
+    }
+
+    public static void CloseAll(GameContext ctx) {
+        int len = ctx.propRespository.TakeAll(out PropEntity[] props);
+        for (int i = 0; i < len; i++) {
+            UnSpawn(ctx, props[i]);
+        }
     }
 }

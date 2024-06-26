@@ -18,6 +18,7 @@ public class MapEntity : MonoBehaviour {
 
     public void TearDown() {
         GameObject.Destroy(this.gameObject);
+        GameObject.Destroy(grid.gameObject);
     }
 
 }

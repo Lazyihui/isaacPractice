@@ -72,7 +72,11 @@ public static class RoleDomain {
         ctx.roleRespository.Remove(role);
         role.TearDown();
     }
-
-    public static void EnterNextLevel(GameObject ctx, RoleEntity role) {
+    public static void CloseAll(GameContext ctx) {
+        int len = ctx.roleRespository.TakeAll(out RoleEntity[] array);
+        for (int i = 0; i < len; i++) {
+            UnSpawn(ctx, array[i]);
+        }
     }
+
 }

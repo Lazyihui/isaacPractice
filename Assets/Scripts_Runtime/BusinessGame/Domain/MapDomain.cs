@@ -25,12 +25,19 @@ public static class MapDomain {
 
     }
 
-    public static void TearDown(GameContext ctx, MapEntity map) {
+    public static void UnSpawn(GameContext ctx, MapEntity map) {
         ctx.mapRespository.Remove(map);
         map.TearDown();
     }
 
+    public static void CloseAll(GameContext ctx) {
+        int len = ctx.mapRespository.TakeAll(out MapEntity[] array);
+        for (int i = 0; i < len; i++) {
+            UnSpawn(ctx, array[i]);
+        }
+    }
 
-    
+
+
 
 }

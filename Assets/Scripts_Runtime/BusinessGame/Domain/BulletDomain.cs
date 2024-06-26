@@ -80,4 +80,12 @@ public static class BulletDomain {
 
     }
 
+    public static void CloseAll(GameContext ctx) {
+        int len = ctx.bulletRespository.TakeAll(out BulletEntity[] bullets);
+        for (int i = 0; i < len; i++) {
+            UnSpawn(ctx, bullets[i]);
+        }
+    }
+
+
 }
