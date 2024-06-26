@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class RoleDomain {
 
-    public static RoleEntity Spawn(GameContext ctx) {
+    public static RoleEntity Spawn(GameContext ctx,Vector2 pos) {
         bool has = ctx.assetsContext.TryGetEntity("Role_Entity", out GameObject prefab);
 
         if (!has) {
@@ -14,6 +14,7 @@ public static class RoleDomain {
 
         GameObject go = GameObject.Instantiate(prefab);
         RoleEntity role = go.GetComponent<RoleEntity>();
+        role.SetPos(pos);
         role.Ctor();
         role.interval = 3;
         role.intervalTimer = 3;

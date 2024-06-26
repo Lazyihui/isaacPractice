@@ -6,7 +6,9 @@ using UnityEngine;
 public static class Game_Business {
     public static void New_Game(GameContext ctx) {
 
-        RoleDomain.Spawn(ctx);
+        ctx.gameEntity.Init();
+
+        RoleDomain.Spawn(ctx, new Vector2(0, 0));
 
         // map
         MapDomain.Spawn(ctx, 1);
@@ -17,6 +19,25 @@ public static class Game_Business {
         tem.isObstacle = true;
         // 后面用TM写
 
+
+    }
+
+    public static void Next_Level(GameContext ctx) {
+        Vector2 pos = Vector2.zero;
+        Debug.Log(ctx.gameEntity.nextLevelID);
+        if (ctx.gameEntity.nextLevelID == 1) {
+            pos = new Vector2(0, -5.5f);
+        } else if (ctx.gameEntity.nextLevelID == 2) {
+            pos = new Vector2(-1, 7.5f);
+        } else if (ctx.gameEntity.nextLevelID == 3) {
+            pos = new Vector2(11.5f, 0.5f);
+        } else if (ctx.gameEntity.nextLevelID == 4) {
+            pos = new Vector2(-11.5f, 1);
+        }
+        RoleDomain.Spawn(ctx,pos);
+        ctx.gameEntity.Init();
+        MapDomain.Spawn(ctx,2);
+        PropDomain.ToSpawnIsTriggerProp(ctx);
 
     }
 
@@ -70,7 +91,7 @@ public static class Game_Business {
             RoleFSMConteoller.Tick(ctx, role, dt);
 
             RoleDomain.ToSpawnBullet(ctx, role, dt);
-
+            Debug.Log(role.transform.position);
         }
 
 
@@ -102,12 +123,12 @@ public static class Game_Business {
 
         // 清除全部
 
-        if (Input.GetKeyDown(KeyCode.C)) {
-            Debug.Log("CloseAll");
+        if (ctx.gameEntity.isEnterLevel) {
             RoleDomain.CloseAll(ctx);
             BulletDomain.CloseAll(ctx);
             PropDomain.CloseAll(ctx);
             MapDomain.CloseAll(ctx);
+            Next_Level(ctx);
         }
 
 

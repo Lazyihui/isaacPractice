@@ -93,18 +93,19 @@ public static class PropDomain {
             RoleEntity role = roles[i];
             float dirSqr = Vector2.SqrMagnitude(role.transform.position - prop.transform.position);
             if (dirSqr < 0.5f) {
+                ctx.gameEntity.isEnterLevel = true;
                 switch (prop.nextLevelID) {
                     case 1:
-                    ctx.gameEntity.nextLevelID = 1;
+                        ctx.gameEntity.nextLevelID = 1;
                         break;
                     case 2:
-                    ctx.gameEntity.nextLevelID = 2;
+                        ctx.gameEntity.nextLevelID = 2;
                         break;
                     case 3:
-                    ctx.gameEntity.nextLevelID = 3;
+                        ctx.gameEntity.nextLevelID = 3;
                         break;
                     case 4:
-                    ctx.gameEntity.nextLevelID = 4;
+                        ctx.gameEntity.nextLevelID = 4;
                         break;
                     default:
                         break;
