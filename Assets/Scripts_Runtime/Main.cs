@@ -8,6 +8,7 @@ public class Main : MonoBehaviour {
     bool isTearDown = false;
     void Awake() {
         ctx = new MainContex();
+        Canvas screenCanvas = GameObject.Find("Canvas").GetComponent<Canvas>();
         
 
         // === init===
@@ -17,7 +18,7 @@ public class Main : MonoBehaviour {
         TemplateInfra.Load(ctx.templateContext);
 
         // === Inject===
-        ctx.Inject();
+        ctx.Inject(screenCanvas);
 
         // new game
         Game_Business.New_Game(ctx.gameContext);

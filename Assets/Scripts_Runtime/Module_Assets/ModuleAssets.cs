@@ -29,17 +29,17 @@ public static class ModuleAssets {
             }
             ctx.mapPtr = ptr;
         }
-        // {
-        //     AssetLabelReference labelReference = new AssetLabelReference();
-        //     labelReference.labelString = "Panel";
-        //     var ptr = Addressables.LoadAssetsAsync<GameObject>(labelReference, null);
-        //     var list = ptr.WaitForCompletion();
-        //     foreach (var go in list) {
-        //         ctx.panels.Add(go.name, go);
-        //     }
-        //     ctx.panelPtr = ptr;
+        {
+            AssetLabelReference labelReference = new AssetLabelReference();
+            labelReference.labelString = "Panel";
+            var ptr = Addressables.LoadAssetsAsync<GameObject>(labelReference, null);
+            var list = ptr.WaitForCompletion();
+            foreach (var go in list) {
+                ctx.panels.Add(go.name, go);
+            }
+            ctx.panelPtr = ptr;
 
-        // }
+        }
 
     }
 

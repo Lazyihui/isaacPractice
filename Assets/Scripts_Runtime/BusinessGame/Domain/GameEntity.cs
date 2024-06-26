@@ -19,6 +19,11 @@ public class GameEntity {
     //是否进入下一关
     public bool isEnterLevel;
 
+    // 面板的数值
+    public int hp;
+
+    public int magic;
+
 
     public GameEntity() {
 
@@ -31,6 +36,7 @@ public class GameEntity {
         mapRecordID = 0;
         propRecordID = 0;
         nextLevelID = 0;
+        hp = 3; 
         isEnterLevel = false;
     }
 

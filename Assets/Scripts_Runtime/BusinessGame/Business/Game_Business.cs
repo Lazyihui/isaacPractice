@@ -20,6 +20,9 @@ public static class Game_Business {
         // 后面用TM写
 
 
+        // 打开panel
+        UIApp.Panel_Heart_Open(ctx.uiContext, 3);
+
     }
 
     public static void Next_Level(GameContext ctx) {
@@ -34,9 +37,9 @@ public static class Game_Business {
         } else if (ctx.gameEntity.nextLevelID == 4) {
             pos = new Vector2(-11.5f, 1);
         }
-        RoleDomain.Spawn(ctx,pos);
+        RoleDomain.Spawn(ctx, pos);
         ctx.gameEntity.Init();
-        MapDomain.Spawn(ctx,2);
+        MapDomain.Spawn(ctx, 2);
         PropDomain.ToSpawnIsTriggerProp(ctx);
 
     }
@@ -91,7 +94,6 @@ public static class Game_Business {
             RoleFSMConteoller.Tick(ctx, role, dt);
 
             RoleDomain.ToSpawnBullet(ctx, role, dt);
-            Debug.Log(role.transform.position);
         }
 
 
@@ -134,5 +136,7 @@ public static class Game_Business {
 
     }
 
-    static void LateTick(GameContext ctx, float dt) { }
+    static void LateTick(GameContext ctx, float dt) {
+        UIApp.Panel_Heart_Unpdate(ctx.uiContext, ctx.gameEntity.hp);
+    }
 }

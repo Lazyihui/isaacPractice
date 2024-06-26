@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Panel
+  m_EditorClassIdentifier: 
+  m_GroupName: Panel
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 9dad775f2f9a60f42b41f96ee3d87ede
+  m_SerializeEntries:
+  - m_GUID: 631885abee2647042b7bb8340d0b08cc
+    m_Address: Panel_HeartElement
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Panel
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4428ac77eef0e1a4ca6fd3c22e1f968f
+    m_Address: Panel_Heart
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - Panel
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: e5254b1df25cd434bb2af38936243e4e, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: db8fa0470d02dd049a8b1ea0bc0cc746, type: 2}
+    - {fileID: 11400000, guid: 40bb03755b9e2dd4994837a0530dd9ff, type: 2}
