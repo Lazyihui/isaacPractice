@@ -6,10 +6,17 @@ using UnityEngine;
 public class PropTM : ScriptableObject {
 
     public int typeID;
-    public Sprite sprite;
-
+    [Header("istrigger")]
     public bool isEnter;
     public bool isObstacle;
 
+    [Header("item")]
+    public bool isGold;
+
+    public bool bomb;
+
+    public bool isKey;
+
+    public Sprite sprite;
 
 }

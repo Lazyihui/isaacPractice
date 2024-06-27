@@ -10,9 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f370b68e7335deb44829b42ea1da5802, type: 3}
-  m_Name: TM_Prop_Obstacle
+  m_Name: TM_1Prop_Obstacle
   m_EditorClassIdentifier: 
   typeID: 1
-  sprite: {fileID: -5940014709222713881, guid: 07907da5bd663624aa97cb4127fda5ce, type: 3}
   isEnter: 0
   isObstacle: 1
+  isGold: 0
+  bomb: 0
+  isKey: 0
+  sprite: {fileID: -5940014709222713881, guid: 07907da5bd663624aa97cb4127fda5ce, type: 3}

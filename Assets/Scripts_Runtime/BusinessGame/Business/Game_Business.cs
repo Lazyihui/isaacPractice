@@ -36,7 +36,6 @@ public static class Game_Business {
 
     public static void Next_Level(GameContext ctx) {
         Vector2 pos = Vector2.zero;
-        Debug.Log(ctx.gameEntity.nextLevelID);
         if (ctx.gameEntity.nextLevelID == 1) {
             pos = new Vector2(0, -5.5f);
         } else if (ctx.gameEntity.nextLevelID == 2) {
