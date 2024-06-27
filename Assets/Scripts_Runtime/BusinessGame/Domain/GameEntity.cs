@@ -36,7 +36,6 @@ public class GameEntity {
         mapRecordID = 0;
         propRecordID = 0;
         nextLevelID = 0;
-        hp = 3; 
         isEnterLevel = false;
     }
 

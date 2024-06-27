@@ -7,6 +7,7 @@ public static class Game_Business {
     public static void New_Game(GameContext ctx) {
 
         ctx.gameEntity.Init();
+        ctx.gameEntity.hp = 3;
 
         RoleDomain.Spawn(ctx, new Vector2(0, 0));
 
@@ -83,7 +84,7 @@ public static class Game_Business {
 
     static void LogicFix(GameContext ctx, float dt) {
         if (Input.GetKeyDown(KeyCode.Space)) {
-            Debug.Log(ctx.gameEntity.nextLevelID);
+                ctx.gameEntity.hp +=1;
         }
 
         // role 
