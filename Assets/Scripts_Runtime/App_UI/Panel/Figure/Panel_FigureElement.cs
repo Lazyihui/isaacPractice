@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class Panel_FigureElement : MonoBehaviour {
 
-    [SerializeField] Sprite sp;
+    [SerializeField] Image img;
 
     [SerializeField] Text txt;
 
@@ -12,7 +12,7 @@ public class Panel_FigureElement : MonoBehaviour {
 
     }
     public void Init(Sprite Sp, int txt) {
-        this.sp = Sp;
+        this.img.sprite = Sp;
         this.txt.text = txt.ToString();
     }
 }

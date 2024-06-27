@@ -28,6 +28,7 @@ public static class Game_Business {
 
         // Panel
         for (int i = 0; i < ctx.gameEntity.figureCount; i++) {
+            Debug.Log(i);
             UIApp.Panel_FigureElement_Add(ctx.uiContext, i);
         }
 

@@ -68,6 +68,7 @@ public static class UIApp {
             Debug.LogError("Panel_FigureElement_Add not found");
             return;
         }
+        Debug.Log(tm.sprite + " " + tm.txt);
         panel.AddElement(tm.sprite, tm.txt);
 
     }

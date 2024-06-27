@@ -19,7 +19,7 @@ public class Panel_Figure : MonoBehaviour {
 
     public void AddElement(Sprite sp, int txt) {
         Panel_FigureElement ele = GameObject.Instantiate(elePrefab, figureGroup);
-        ele.Init(sp, txt);
+        Init(sp, txt);
     }
 
     public void Show() {

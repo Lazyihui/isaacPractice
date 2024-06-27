@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: TM_Figure 0
   m_EditorClassIdentifier: 
   typeID: 0
-  sprite: {fileID: 21300000, guid: e6897cda8db259f449fe7b58adf0c271, type: 3}
+  sprite: {fileID: 21300000, guid: fa24d0dc4aec0914fb6aa3a8f412beec, type: 3}
   txt: 0
