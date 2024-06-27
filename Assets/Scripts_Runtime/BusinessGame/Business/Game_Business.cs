@@ -16,8 +16,8 @@ public static class Game_Business {
 
         PropDomain.ToSpawnIsTriggerProp(ctx);
 
-        PropEntity tem = PropDomain.Spawn(ctx, new Vector2(-3, 1), 1);
-        tem.isObstacle = true;
+        // PropEntity tem = PropDomain.Spawn(ctx, new Vector2(-3, 1), 1);
+        // tem.isObstacle = true;
         // 后面用TM写
 
 
@@ -27,9 +27,7 @@ public static class Game_Business {
         UIApp.Panel_Figure_Open(ctx.uiContext);
 
         // Panel
-        Debug.Log(ctx.gameEntity.figureCount);
         for (int i = 0; i < ctx.gameEntity.figureCount; i++) {
-            Debug.Log("figureCount");
             UIApp.Panel_FigureElement_Add(ctx.uiContext, i);
         }
 
