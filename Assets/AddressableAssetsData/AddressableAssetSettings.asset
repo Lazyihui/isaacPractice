@@ -95,6 +95,7 @@ MonoBehaviour:
     - MapGrid
     - TM_Prop
     - Panel
+    - TM_FigureElement
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: f9d20247a2554df4eb768569d2ad36ef, type: 2}

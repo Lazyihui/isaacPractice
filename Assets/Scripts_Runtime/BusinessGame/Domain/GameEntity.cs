@@ -24,6 +24,8 @@ public class GameEntity {
 
     public int magic;
 
+    public int figureCount;
+
 
     public GameEntity() {
 
@@ -36,6 +38,7 @@ public class GameEntity {
         mapRecordID = 0;
         propRecordID = 0;
         nextLevelID = 0;
+        figureCount = 3;
         isEnterLevel = false;
     }
 

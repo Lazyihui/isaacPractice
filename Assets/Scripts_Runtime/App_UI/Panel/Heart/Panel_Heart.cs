@@ -43,7 +43,7 @@ public class Panel_Heart : MonoBehaviour {
         gameObject.SetActive(true);
     }
 
-    public void Hide() {
+    public void TearDown() {
         GameObject.Destroy(this.gameObject);
     }
 

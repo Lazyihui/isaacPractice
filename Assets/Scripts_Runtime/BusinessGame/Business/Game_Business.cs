@@ -24,6 +24,16 @@ public static class Game_Business {
         // 打开panel
         UIApp.Panel_Heart_Open(ctx.uiContext, 3);
 
+        UIApp.Panel_Figure_Open(ctx.uiContext);
+
+        // Panel
+        Debug.Log(ctx.gameEntity.figureCount);
+        for (int i = 0; i < ctx.gameEntity.figureCount; i++) {
+            Debug.Log("figureCount");
+            UIApp.Panel_FigureElement_Add(ctx.uiContext, i);
+        }
+
+
     }
 
     public static void Next_Level(GameContext ctx) {
@@ -84,7 +94,7 @@ public static class Game_Business {
 
     static void LogicFix(GameContext ctx, float dt) {
         if (Input.GetKeyDown(KeyCode.Space)) {
-                ctx.gameEntity.hp +=1;
+            ctx.gameEntity.hp += 1;
         }
 
         // role 
@@ -123,6 +133,8 @@ public static class Game_Business {
             PropDomain.SetSprite(ctx, prop);
             PropDomain.EnterNextLevel(ctx, prop);
         }
+
+
 
         // 清除全部
 

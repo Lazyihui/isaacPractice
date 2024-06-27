@@ -28,6 +28,6 @@ public class MainContex {
 
     public void Inject(Canvas canvas) {
         gameContext.Inject(moduleInput, assetsContext,templateContext,uiContext);
-        uiContext.Inject(canvas, assetsContext);
+        uiContext.Inject(canvas, assetsContext,templateContext);
      }
 }

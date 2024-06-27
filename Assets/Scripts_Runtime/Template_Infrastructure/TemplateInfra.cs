@@ -21,12 +21,26 @@ public class TemplateInfra {
             }
             ctx.propPtr = ptr;
         }
+        {
+            AssetLabelReference labelReference = new AssetLabelReference();
+            labelReference.labelString = "TM_FigureElement";
+            var ptr = Addressables.LoadAssetsAsync<FigureElementTM>(labelReference, null);
+            var list = ptr.WaitForCompletion();
+            foreach (var go in list) {
+                ctx.figures.Add(go.typeID, go);
+            }
+            ctx.figurePtr = ptr;
+
+        }
 
     }
 
     public static void Unload(TemplateContext ctx) {
         if (ctx.propPtr.IsValid()) {
             Addressables.Release(ctx.propPtr);
+        }
+        if (ctx.figurePtr.IsValid()) {
+            Addressables.Release(ctx.figurePtr);
         }
     }
 }
