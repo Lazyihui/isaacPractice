@@ -28,7 +28,6 @@ public static class Game_Business {
 
         // Panel
         for (int i = 0; i < ctx.gameEntity.figureCount; i++) {
-            Debug.Log(i);
             UIApp.Panel_FigureElement_Add(ctx.uiContext, i);
         }
 
@@ -129,7 +128,6 @@ public static class Game_Business {
         for (int i = 0; i < propLen; i++) {
             PropEntity prop = props[i];
             PropDomain.BoolisTrigger(ctx, prop);
-            PropDomain.SetSprite(ctx, prop);
             PropDomain.EnterNextLevel(ctx, prop);
         }
 

@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class PropEntity : MonoBehaviour {
 
+    // 0 enter 1 obstacle
 
     [SerializeField] Collider2D cld2D;
 
