@@ -153,13 +153,13 @@ public static class Game_Business {
 
         for (int i = 0; i < figureEleLen; i++) {
             Panel_FigureElement ele = figureEles[i];
-            if (ele.typeID == 2) {
+            if (ele.typeID == PropConst.GOLD) {
                 UIApp.Panel_FigureElement_SetText(ctx.uiContext, ele, ele.typeID, ctx.gameEntity.goldCount);
             }
-            if (ele.typeID == 3) {
+            if (ele.typeID == PropConst.BOMB) {
                 UIApp.Panel_FigureElement_SetText(ctx.uiContext, ele, ele.typeID, ctx.gameEntity.bombCount);
             }
-            if (ele.typeID == 4) {
+            if (ele.typeID == PropConst.KEY) {
                 UIApp.Panel_FigureElement_SetText(ctx.uiContext, ele, ele.typeID, ctx.gameEntity.keyCount);
             }
         }
