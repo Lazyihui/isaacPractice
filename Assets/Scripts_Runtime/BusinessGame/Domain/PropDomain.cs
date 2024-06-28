@@ -59,6 +59,15 @@ public static class PropDomain {
         prop5.nextLevelID = 3;
     }
 
+    public static void SetRigidbody(GameContext ctx, PropEntity prop) {
+        if (prop.typeID == PropConst.CHEST) {
+            prop.SetRigidbody(RigidbodyType2D.Dynamic);
+        }else {
+            prop.SetRigidbody(RigidbodyType2D.Static);
+        }
+
+
+    }
 
 
     static void OnTriggerEnter(PropEntity prop, Collider2D other) {

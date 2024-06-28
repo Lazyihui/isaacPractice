@@ -9,6 +9,8 @@ public class PropEntity : MonoBehaviour {
 
     [SerializeField] SpriteRenderer sprRd;
 
+    [SerializeField] Rigidbody2D rb2D;
+
 
     public int id;
 
@@ -32,6 +34,8 @@ public class PropEntity : MonoBehaviour {
 
     public bool isKey;
 
+    public bool isChest;
+
     public void Ctor() {
     }
 
@@ -47,6 +51,11 @@ public class PropEntity : MonoBehaviour {
         sprRd.sprite = sprite;
     }
 
+    public void SetRigidbody(RigidbodyType2D type) {
+        rb2D.bodyType = type;
+        rb2D.constraints = RigidbodyConstraints2D.FreezePositionY;
+    
+    }
     public void TearDown() {
         GameObject.Destroy(this.gameObject);
     }

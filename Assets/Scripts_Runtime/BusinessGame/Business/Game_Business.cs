@@ -16,7 +16,7 @@ public static class Game_Business {
 
         PropDomain.ToSpawnIsTriggerProp(ctx);
 
-        // PropEntity tem = PropDomain.Spawn(ctx, new Vector2(-3, 1), 1);
+        PropEntity tem = PropDomain.Spawn(ctx, new Vector2(-3, 1), 1);
         // tem.isObstacle = true;
         // 后面用TM写
 
@@ -48,6 +48,8 @@ public static class Game_Business {
         RoleDomain.Spawn(ctx, pos);
         ctx.gameEntity.Init();
         MapDomain.Spawn(ctx, 2);
+
+        PropDomain.Spawn(ctx, new Vector2(-3, 1), PropConst.CHEST);
         PropDomain.ToSpawnIsTriggerProp(ctx);
 
     }
@@ -128,6 +130,8 @@ public static class Game_Business {
             PropEntity prop = props[i];
             PropDomain.BoolisTrigger(ctx, prop);
             PropDomain.EnterNextLevel(ctx, prop);
+            // 问题
+            // PropDomain.SetRigidbody(ctx, prop);
         }
 
 
