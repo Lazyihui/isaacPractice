@@ -12,12 +12,12 @@ public class TemplateContext {
 
     public AsyncOperationHandle propPtr;
 
-    public Dictionary<int, FigureElementTM> figures;
+    public Dictionary<int, FigureElementTM> figureEles;
 
     public AsyncOperationHandle figurePtr;
     public TemplateContext() {
         props = new Dictionary<int, PropTM>();
-        figures = new Dictionary<int, FigureElementTM>();
+        figureEles = new Dictionary<int, FigureElementTM>();
     }
 
 }

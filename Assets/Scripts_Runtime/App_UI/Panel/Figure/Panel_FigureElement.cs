@@ -7,7 +7,9 @@ public class Panel_FigureElement : MonoBehaviour {
     [SerializeField] Image img;
 
     [SerializeField] Text txt;
+    public int id;
 
+    public int typeID;
     public void Ctor() {
 
     }
@@ -15,4 +17,9 @@ public class Panel_FigureElement : MonoBehaviour {
         this.img.sprite = Sp;
         this.txt.text = txt.ToString();
     }
+
+    public void SetText(int txt) {
+        this.txt.text = txt.ToString();
+    }
+
 }

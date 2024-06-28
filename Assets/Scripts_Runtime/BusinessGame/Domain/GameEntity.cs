@@ -26,6 +26,12 @@ public class GameEntity {
 
     public int figureCount;
 
+    public int goldCount;
+
+    public int bombCount;
+
+    public int keyCount;
+
 
     public GameEntity() {
 
@@ -40,6 +46,13 @@ public class GameEntity {
         nextLevelID = 0;
         figureCount = 3;
         isEnterLevel = false;
+    }
+
+    public void NoUpdata() {
+        hp = 3;
+        goldCount =3;
+        bombCount = 0;
+        keyCount = 0;
     }
 
 }

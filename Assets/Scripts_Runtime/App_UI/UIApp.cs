@@ -63,13 +63,18 @@ public static class UIApp {
         if (panel == null) {
             return;
         }
-        bool has = ctx.templateContext.figures.TryGetValue(typeID, out FigureElementTM tm);
+        bool has = ctx.templateContext.figureEles.TryGetValue(typeID, out FigureElementTM tm);
         if (!has) {
             Debug.LogError("Panel_FigureElement_Add not found");
             return;
         }
-        panel.AddElement(tm.sprite, tm.txt);
+        panel.AddElement(ctx, tm.sprite, tm.txt, typeID);
 
+    }
+
+    public static void Panel_FigureElement_SetText(UIContext ctx, Panel_FigureElement ele, int typeID, int txt) {
+        // 2 是gold 3 是Bomb 4 是钥匙
+            ele.SetText(txt);
     }
     public static void Panel_Figure_Close(UIContext ctx) {
         Panel_Figure panel = ctx.panel_Figure;

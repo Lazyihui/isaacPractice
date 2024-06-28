@@ -27,7 +27,7 @@ public class TemplateInfra {
             var ptr = Addressables.LoadAssetsAsync<FigureElementTM>(labelReference, null);
             var list = ptr.WaitForCompletion();
             foreach (var go in list) {
-                ctx.figures.Add(go.typeID, go);
+                ctx.figureEles.Add(go.typeID, go);
             }
             ctx.figurePtr = ptr;
 

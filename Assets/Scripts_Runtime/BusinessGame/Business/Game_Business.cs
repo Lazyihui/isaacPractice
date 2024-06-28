@@ -7,7 +7,7 @@ public static class Game_Business {
     public static void New_Game(GameContext ctx) {
 
         ctx.gameEntity.Init();
-        ctx.gameEntity.hp = 3;
+        ctx.gameEntity.NoUpdata();
 
         RoleDomain.Spawn(ctx, new Vector2(0, 0));
 
@@ -147,5 +147,21 @@ public static class Game_Business {
 
     static void LateTick(GameContext ctx, float dt) {
         UIApp.Panel_Heart_Unpdate(ctx.uiContext, ctx.gameEntity.hp);
+
+        //  panel giureElement
+        int figureEleLen = ctx.uiContext.figureEleRespository.TakeAll(out Panel_FigureElement[] figureEles);
+
+        for (int i = 0; i < figureEleLen; i++) {
+            Panel_FigureElement ele = figureEles[i];
+            if (ele.typeID == 2) {
+                UIApp.Panel_FigureElement_SetText(ctx.uiContext, ele, ele.typeID, ctx.gameEntity.goldCount);
+            }
+            if (ele.typeID == 3) {
+                UIApp.Panel_FigureElement_SetText(ctx.uiContext, ele, ele.typeID, ctx.gameEntity.bombCount);
+            }
+            if (ele.typeID == 4) {
+                UIApp.Panel_FigureElement_SetText(ctx.uiContext, ele, ele.typeID, ctx.gameEntity.keyCount);
+            }
+        }
     }
 }

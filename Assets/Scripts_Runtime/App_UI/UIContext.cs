@@ -16,9 +16,16 @@ public class UIContext {
 
     public Panel_Figure panel_Figure;
 
-
+    // repository
+    public FigureEleRespository figureEleRespository;
+    public int figureEleRecordID;
     public UIContext() {
+
         uiEvent = new UIEvent();
+        // repo
+        figureEleRespository = new FigureEleRespository();
+        figureEleRecordID = 0;
+
     }
 
     public void Inject(Canvas canvas, AssetsContext assetsContext, TemplateContext templateContext) {
