@@ -22,6 +22,7 @@ public static class PropDomain {
         prop.SetSprite(tm.sprite);
         prop.isEnter = tm.isEnter;
         prop.isObstacle = tm.isObstacle;
+        prop.isFigure = tm.isFigure;
         prop.id = ctx.gameEntity.propRecordID;
         ctx.gameEntity.propRecordID++;
         ctx.propRespository.Add(prop);
@@ -40,6 +41,10 @@ public static class PropDomain {
 
         if (prop.isObstacle) {
             prop.SetCollider(false);
+        }
+
+        if (prop.isFigure) {
+            prop.SetCollider(true);
         }
 
     }
@@ -62,7 +67,7 @@ public static class PropDomain {
     public static void SetRigidbody(GameContext ctx, PropEntity prop) {
         if (prop.typeID == PropConst.CHEST) {
             prop.SetRigidbody(RigidbodyType2D.Dynamic);
-        }else {
+        } else {
             prop.SetRigidbody(RigidbodyType2D.Static);
         }
 
@@ -110,6 +115,40 @@ public static class PropDomain {
         }
 
     }
+
+    // StabEntity target = ctx.stabRepository.Find((stab) => {
+    //         float dirSqr = Vector2.SqrMagnitude(stab.transform.position - role.transform.position);
+    //         if (dirSqr < 1.5f) {
+    //             role.isDie = true;
+    //             return true;
+    //         } else {
+    //             return false;
+    //         }
+    //     });
+
+    // 碰到宝箱生成金币
+    public static void ChestSpawnGold(GameContext ctx, PropEntity prop) {
+        if (prop.typeID == PropConst.CHEST) {
+
+            int len = ctx.roleRespository.TakeAll(out RoleEntity[] roles);
+
+            for (int i = 0; i < len; i++) {
+                RoleEntity role = roles[i];
+                float dirSqr = Vector2.SqrMagnitude(role.transform.position - prop.transform.position);
+                if (dirSqr < 1.0f) {
+                    PropDomain.Spawn(ctx, new Vector2(prop.transform.position.x - 1, prop.transform.position.y - 1), PropConst.GOLD);
+                    PropDomain.Spawn(ctx, new Vector2(prop.transform.position.x + 1, prop.transform.position.y + 1), PropConst.GOLD);
+                    PropDomain.Spawn(ctx, new Vector2(prop.transform.position.x - 1, prop.transform.position.y + 3), PropConst.GOLD);
+                }
+            }
+
+
+            // PropEntity prop1 = Spawn(ctx, prop.transform.position, PropConst.GOLD);
+            // prop1.nextLevelID = prop.nextLevelID;
+
+        }
+    }
+
 
     public static void CloseAll(GameContext ctx) {
         int len = ctx.propRespository.TakeAll(out PropEntity[] props);

@@ -25,6 +25,9 @@ public class PropEntity : MonoBehaviour {
 
     // 障碍
     public bool isObstacle;
+    
+    //istrigger 
+    public bool isFigure;
     //这里区分是不是触发器
 
     // 是什么种类
@@ -54,7 +57,7 @@ public class PropEntity : MonoBehaviour {
     public void SetRigidbody(RigidbodyType2D type) {
         rb2D.bodyType = type;
         rb2D.constraints = RigidbodyConstraints2D.FreezePositionY;
-    
+
     }
     public void TearDown() {
         GameObject.Destroy(this.gameObject);

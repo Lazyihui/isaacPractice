@@ -7,4 +7,6 @@ public static class PropConst {
     public const int KEY = 4;
 
     public const int CHEST = 5;
+
+    public const int COIN = 6;  // 金币
 }

@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f370b68e7335deb44829b42ea1da5802, type: 3}
-  m_Name: TM_5Prop_Chest
+  m_Name: TM_6Prop_Gold
   m_EditorClassIdentifier: 
-  typeID: 5
+  typeID: 6
   isEnter: 0
   isObstacle: 0
   isFigure: 1
-  isGold: 0
+  isGold: 1
   bomb: 0
-  isKey: 1
-  sprite: {fileID: 4003563873750686401, guid: 4a02a9d12271f914685e30e9f7e4b568, type: 3}
+  isKey: 0
+  sprite: {fileID: 6680314957467710897, guid: b8cb59d863239334ea41d8560a0914fb, type: 3}

@@ -10,6 +10,8 @@ public class PropTM : ScriptableObject {
     public bool isEnter;
     public bool isObstacle;
 
+    public bool isFigure;
+
     [Header("item")]
     public bool isGold;
 
