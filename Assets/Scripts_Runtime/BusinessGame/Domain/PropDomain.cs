@@ -31,6 +31,10 @@ public static class PropDomain {
 
         prop.isChest = tm.isChest;
         prop.isLive = tm.isLive;
+
+        prop.isCoin = tm.isCoin;
+
+        prop.animatior.runtimeAnimatorController = tm.animator;
         prop.id = ctx.gameEntity.propRecordID;
         prop.nextLevelID = nextLevelID;
         ctx.gameEntity.propRecordID++;

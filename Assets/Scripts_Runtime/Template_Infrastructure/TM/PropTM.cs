@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-
+using UnityEngine.Animations;
 
 [CreateAssetMenu(fileName = "TM_Prop", menuName = "Template/TM_Prop")]
 public class PropTM : ScriptableObject {
@@ -33,5 +33,7 @@ public class PropTM : ScriptableObject {
 
     [Header("animation")]   
 
-    public Animator animator;
+    public RuntimeAnimatorController animator;
+
+
 }

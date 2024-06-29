@@ -23,3 +23,4 @@ MonoBehaviour:
   isLive: 0
   isCoin: 1
   sprite: {fileID: 6680314957467710897, guid: b8cb59d863239334ea41d8560a0914fb, type: 3}
+  animator: {fileID: 9100000, guid: 42f94244f05fca240a111c8435f0606d, type: 2}
