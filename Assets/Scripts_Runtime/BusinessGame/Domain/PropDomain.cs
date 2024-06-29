@@ -129,15 +129,12 @@ public static class PropDomain {
 
             for (int i = 0; i < len; i++) {
                 RoleEntity role = roles[i];
-                Debug.Log("0" + role.transform.position);
                 float dirSqr = Vector2.SqrMagnitude(role.transform.position - prop.transform.position);
                 if (dirSqr < 1.0f) {
-                    Debug.Log("1" + role.transform.position);
                     Vector2 pos = prop.transform.position;
                     PropDomain.Spawn(ctx, new Vector2(pos.x - 1, pos.y - 1), PropConst.GOLD, 0);
                     PropDomain.Spawn(ctx, new Vector2(pos.x + 1, pos.y + 1), PropConst.GOLD, 0);
                     PropDomain.Spawn(ctx, new Vector2(pos.x - 1, pos.y + 3), PropConst.GOLD, 0);
-                    Debug.Log("2" + role.transform.position);
 
                 }
             }

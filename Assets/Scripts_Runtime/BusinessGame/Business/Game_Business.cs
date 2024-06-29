@@ -17,7 +17,6 @@ public static class Game_Business {
         PropDomain.ToSpawnIsTriggerProp(ctx);
 
         PropDomain.Spawn(ctx, new Vector2(-3, 1), 1,0);
-        PropDomain.Spawn(ctx, new Vector2(3, 1), PropConst.CHEST,0);
 
         // tem.isObstacle = true;
         // 后面用TM写
@@ -50,6 +49,7 @@ public static class Game_Business {
         RoleDomain.Spawn(ctx, pos);
         ctx.gameEntity.Init();
         MapDomain.Spawn(ctx, 2);
+        PropDomain.Spawn(ctx, new Vector2(3, 1), PropConst.CHEST,0);
 
         // PropDomain.Spawn(ctx, new Vector2(1, 0), PropConst.CHEST,0);
         PropDomain.ToSpawnIsTriggerProp(ctx);
