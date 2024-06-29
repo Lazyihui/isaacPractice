@@ -9,7 +9,7 @@ public static class Game_Business {
         ctx.gameEntity.Init();
         ctx.gameEntity.NoUpdata();
 
-        RoleDomain.Spawn(ctx, new Vector2(0, 0));
+        RoleDomain.Spawn(ctx, new Vector2(0, 0),RoleConst.PLAYER);
 
         // map
         MapDomain.Spawn(ctx, 1);
@@ -46,7 +46,7 @@ public static class Game_Business {
         } else if (ctx.gameEntity.nextLevelID == 4) {
             pos = new Vector2(-11.5f, 1);
         }
-        RoleDomain.Spawn(ctx, pos);
+        RoleDomain.Spawn(ctx, pos,RoleConst.PLAYER);
         ctx.gameEntity.Init();
         MapDomain.Spawn(ctx, 2);
         PropDomain.Spawn(ctx, new Vector2(3, 1), PropConst.CHEST,0);

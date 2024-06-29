@@ -4,20 +4,30 @@ using UnityEngine;
 
 public static class RoleDomain {
 
-    public static RoleEntity Spawn(GameContext ctx,Vector2 pos) {
-        bool has = ctx.assetsContext.TryGetEntity("Role_Entity", out GameObject prefab);
+    public static RoleEntity Spawn(GameContext ctx,Vector2 pos,int typeID) {
+        ctx.assetsContext.TryGetEntity("Role_Entity", out GameObject prefab);
+
+        bool has = ctx.templateContext.roles.TryGetValue(typeID, out RoleTM tm);
 
         if (!has) {
-            Debug.LogError("RoleEntity not found");
+            Debug.LogError("RoleTM not found");
             return null;
         }
 
         GameObject go = GameObject.Instantiate(prefab);
         RoleEntity role = go.GetComponent<RoleEntity>();
+        role.typeID = tm.typeID;
+
         role.SetPos(pos);
         role.Ctor();
-        role.interval = 3;
-        role.intervalTimer = 3;
+
+        role.moveSpeed = tm.moveSpeed;
+        role.interval = tm.interval;
+        role.intervalTimer = tm.intervalTimer;
+        role.isRole = tm.isRole;
+        role.animatior.runtimeAnimatorController = tm.animator;
+        // role.interval = 3;
+        // role.intervalTimer = 3;
 
         role.id = ctx.gameEntity.roleRecordID;
         ctx.gameEntity.roleRecordID++;

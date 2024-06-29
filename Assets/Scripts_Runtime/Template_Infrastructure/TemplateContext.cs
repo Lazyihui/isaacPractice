@@ -15,9 +15,15 @@ public class TemplateContext {
     public Dictionary<int, FigureElementTM> figureEles;
 
     public AsyncOperationHandle figurePtr;
+
+
+    public Dictionary<int, RoleTM> roles;
+
+    public AsyncOperationHandle rolePtr;    
     public TemplateContext() {
         props = new Dictionary<int, PropTM>();
         figureEles = new Dictionary<int, FigureElementTM>();
+        roles = new Dictionary<int, RoleTM>();
     }
 
 }

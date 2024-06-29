@@ -8,12 +8,16 @@ public class RoleEntity : MonoBehaviour {
     [SerializeField] Rigidbody2D rb;
 
     [SerializeField] public Animator animatior;
-    [SerializeField] float moveSpeed = 1;
+    public float moveSpeed;
 
 
     public int id;
 
+    public int typeID;
+    
     public bool isRole;
+
+
 
     // 状态机
     public RoleFSMStatus status;
@@ -35,6 +39,11 @@ public class RoleEntity : MonoBehaviour {
     public float interval;
 
     public float intervalTimer;
+
+
+    // mst素材信息
+
+
 
     public void Ctor() {
 

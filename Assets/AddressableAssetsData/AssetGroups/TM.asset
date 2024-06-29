@@ -77,6 +77,12 @@ MonoBehaviour:
     m_SerializedLabels:
     - TM_Prop
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 37162188f41ebab45816f5ff872a77cc
+    m_Address: Assets/Rescoures_Runtime/Role/TM/TM_0Role.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TM_Role
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: e5254b1df25cd434bb2af38936243e4e, type: 2}
   m_SchemaSet:

@@ -32,6 +32,17 @@ public class TemplateInfra {
             ctx.figurePtr = ptr;
 
         }
+        {
+            AssetLabelReference labelReference = new AssetLabelReference();
+            labelReference.labelString = "TM_Role";
+            var ptr = Addressables.LoadAssetsAsync<RoleTM>(labelReference, null);
+            var list = ptr.WaitForCompletion();
+            foreach (var go in list) {
+                ctx.roles.Add(go.typeID, go);
+            }
+            ctx.rolePtr = ptr;
+        
+        }
 
     }
 
@@ -41,6 +52,9 @@ public class TemplateInfra {
         }
         if (ctx.figurePtr.IsValid()) {
             Addressables.Release(ctx.figurePtr);
+        }
+        if (ctx.rolePtr.IsValid()) {
+            Addressables.Release(ctx.rolePtr);
         }
     }
 }
