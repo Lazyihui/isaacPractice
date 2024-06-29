@@ -20,13 +20,17 @@ public static class PropDomain {
         prop.typeID = typeID;
         prop.nextLevelID = 0;
         prop.SetSprite(tm.sprite);
+
         prop.isEnter = tm.isEnter;
         prop.isObstacle = tm.isObstacle;
         prop.isFigure = tm.isFigure;
+
         prop.isGold = tm.isGold;
         prop.isbomb = tm.bomb;
         prop.isKey = tm.isKey;
+
         prop.isChest = tm.isChest;
+        prop.isLive = tm.isLive;
         prop.id = ctx.gameEntity.propRecordID;
         prop.nextLevelID = nextLevelID;
         ctx.gameEntity.propRecordID++;
@@ -42,7 +46,7 @@ public static class PropDomain {
     public static void BoolisTrigger(GameContext ctx, PropEntity prop) {
         if (prop.isEnter) {
             prop.SetCollider(true);
-        }else{
+        } else {
             prop.SetCollider(false);
         }
 
@@ -123,7 +127,7 @@ public static class PropDomain {
 
     // 碰到宝箱生成金币
     public static void ChestSpawnGold(GameContext ctx, PropEntity prop) {
-        if (prop.typeID == PropConst.CHEST) {
+        if (prop.typeID == PropConst.CHEST && prop.isLive) {
 
             int len = ctx.roleRespository.TakeAll(out RoleEntity[] roles);
 
@@ -132,16 +136,13 @@ public static class PropDomain {
                 float dirSqr = Vector2.SqrMagnitude(role.transform.position - prop.transform.position);
                 if (dirSqr < 1.0f) {
                     Vector2 pos = prop.transform.position;
-                    PropDomain.Spawn(ctx, new Vector2(pos.x - 1, pos.y - 1), PropConst.GOLD, 0);
-                    PropDomain.Spawn(ctx, new Vector2(pos.x + 1, pos.y + 1), PropConst.GOLD, 0);
-                    PropDomain.Spawn(ctx, new Vector2(pos.x - 1, pos.y + 3), PropConst.GOLD, 0);
+                    PropDomain.Spawn(ctx, new Vector2(pos.x - 3, pos.y - 4), PropConst.GOLD, 0);
+                    PropDomain.Spawn(ctx, new Vector2(pos.x + 2, pos.y + 1), PropConst.GOLD, 0);
+                    PropDomain.Spawn(ctx, new Vector2(pos.x - 2, pos.y + 3), PropConst.GOLD, 0);
+                    prop.isLive = false;
 
                 }
             }
-
-
-            // PropEntity prop1 = Spawn(ctx, prop.transform.position, PropConst.GOLD);
-            // prop1.nextLevelID = prop.nextLevelID;
 
         }
     }

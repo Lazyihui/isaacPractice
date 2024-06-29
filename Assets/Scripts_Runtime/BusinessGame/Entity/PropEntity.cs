@@ -25,7 +25,7 @@ public class PropEntity : MonoBehaviour {
 
     // 障碍
     public bool isObstacle;
-    
+
     //istrigger 
     public bool isFigure;
     //这里区分是不是触发器
@@ -37,7 +37,12 @@ public class PropEntity : MonoBehaviour {
 
     public bool isKey;
 
+
+    // 保险身上带的属性
     public bool isChest;
+
+    public bool isLive;
+    // 保险身上带的属性
 
     public void Ctor() {
     }
