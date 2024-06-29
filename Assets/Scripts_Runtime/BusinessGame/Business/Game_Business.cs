@@ -9,14 +9,14 @@ public static class Game_Business {
         ctx.gameEntity.Init();
         ctx.gameEntity.NoUpdata();
 
-        RoleDomain.Spawn(ctx, new Vector2(0, 0),RoleConst.PLAYER);
+        RoleDomain.Spawn(ctx, new Vector2(0, 0), RoleConst.PLAYER);
 
         // map
         MapDomain.Spawn(ctx, 1);
 
         PropDomain.ToSpawnIsTriggerProp(ctx);
 
-        PropDomain.Spawn(ctx, new Vector2(-3, 1), 1,0);
+        PropDomain.Spawn(ctx, new Vector2(-3, 1), 1, 0);
 
         // tem.isObstacle = true;
         // 后面用TM写
@@ -46,10 +46,10 @@ public static class Game_Business {
         } else if (ctx.gameEntity.nextLevelID == 4) {
             pos = new Vector2(-11.5f, 1);
         }
-        RoleDomain.Spawn(ctx, pos,RoleConst.PLAYER);
+        RoleDomain.Spawn(ctx, pos, RoleConst.PLAYER);
         ctx.gameEntity.Init();
         MapDomain.Spawn(ctx, 2);
-        PropDomain.Spawn(ctx, new Vector2(3, 1), PropConst.CHEST,0);
+        PropDomain.Spawn(ctx, new Vector2(3, 1), PropConst.CHEST, 0);
 
         // PropDomain.Spawn(ctx, new Vector2(1, 0), PropConst.CHEST,0);
         PropDomain.ToSpawnIsTriggerProp(ctx);
@@ -102,10 +102,18 @@ public static class Game_Business {
         int roleLen = ctx.roleRespository.TakeAll(out RoleEntity[] roles);
         for (int i = 0; i < roleLen; i++) {
             RoleEntity role = roles[i];
-            RoleDomain.Move(ctx, role, ctx.moduleInput.moveAxis, dt);
-            RoleFSMConteoller.Tick(ctx, role, dt);
 
-            RoleDomain.ToSpawnBullet(ctx, role, dt);
+            if (role.isRole) {
+
+                RoleDomain.Move(ctx, role, ctx.moduleInput.moveAxis, dt);
+                RoleFSMConteoller.Tick(ctx, role, dt);
+                RoleDomain.ToSpawnBullet(ctx, role, dt);
+
+            } else {
+                
+            }
+
+
         }
 
 

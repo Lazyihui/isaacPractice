@@ -93,6 +93,9 @@ public static class PropDomain {
 
         for (int i = 0; i < roleLen; i++) {
             RoleEntity role = roles[i];
+            if(!role.isRole){
+                return;
+            }
             float dirSqr = Vector2.SqrMagnitude(role.transform.position - prop.transform.position);
             if (dirSqr < 0.5f) {
                 ctx.gameEntity.isEnterLevel = true;
@@ -127,6 +130,9 @@ public static class PropDomain {
         for (int i = 0; i < len; i++) {
 
             RoleEntity role = roles[i];
+             if(!role.isRole){
+                return;
+            }
             float dirSqr = Vector2.SqrMagnitude(role.transform.position - prop.transform.position);
 
             if (prop.typeID == PropConst.CHEST && prop.isLive) {
