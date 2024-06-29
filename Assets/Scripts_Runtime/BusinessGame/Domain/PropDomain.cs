@@ -115,36 +115,38 @@ public static class PropDomain {
 
     }
 
-    // StabEntity target = ctx.stabRepository.Find((stab) => {
-    //         float dirSqr = Vector2.SqrMagnitude(stab.transform.position - role.transform.position);
-    //         if (dirSqr < 1.5f) {
-    //             role.isDie = true;
-    //             return true;
-    //         } else {
-    //             return false;
-    //         }
-    //     });
-
     // 碰到宝箱生成金币
     public static void ChestSpawnGold(GameContext ctx, PropEntity prop) {
-        if (prop.typeID == PropConst.CHEST && prop.isLive) {
 
-            int len = ctx.roleRespository.TakeAll(out RoleEntity[] roles);
+        int len = ctx.roleRespository.TakeAll(out RoleEntity[] roles);
 
-            for (int i = 0; i < len; i++) {
-                RoleEntity role = roles[i];
-                float dirSqr = Vector2.SqrMagnitude(role.transform.position - prop.transform.position);
+        for (int i = 0; i < len; i++) {
+
+            RoleEntity role = roles[i];
+            float dirSqr = Vector2.SqrMagnitude(role.transform.position - prop.transform.position);
+
+            if (prop.typeID == PropConst.CHEST && prop.isLive) {
                 if (dirSqr < 1.0f) {
                     Vector2 pos = prop.transform.position;
-                    PropDomain.Spawn(ctx, new Vector2(pos.x - 3, pos.y - 4), PropConst.GOLD, 0);
-                    PropDomain.Spawn(ctx, new Vector2(pos.x + 2, pos.y + 1), PropConst.GOLD, 0);
-                    PropDomain.Spawn(ctx, new Vector2(pos.x - 2, pos.y + 3), PropConst.GOLD, 0);
+                    PropDomain.Spawn(ctx, new Vector2(pos.x - 3, pos.y - 4), PropConst.COIN, 0);
+                    PropDomain.Spawn(ctx, new Vector2(pos.x + 2, pos.y + 1), PropConst.COIN, 0);
+                    PropDomain.Spawn(ctx, new Vector2(pos.x - 2, pos.y + 3), PropConst.COIN, 0);
                     prop.isLive = false;
 
                 }
             }
 
+            if (prop.typeID == PropConst.COIN) {
+                if (dirSqr < 1.0f) {
+                    ctx.gameEntity.goldCount += 1;
+                    UnSpawn(ctx, prop);
+                }
+
+            }
+
+
         }
+
     }
 
 

@@ -44,6 +44,12 @@ public class PropEntity : MonoBehaviour {
     public bool isLive;
     // 保险身上带的属性
 
+    // 掉在地上的金币
+    public bool isCoin;
+
+    
+    // 掉在地上的金币
+
     public void Ctor() {
     }
 

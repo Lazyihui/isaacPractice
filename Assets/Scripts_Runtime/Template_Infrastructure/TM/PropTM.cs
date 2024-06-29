@@ -23,6 +23,12 @@ public class PropTM : ScriptableObject {
     public bool isChest;
 
     public bool isLive;
+
+    [Header("coin")]
+    public bool isCoin;
+
+
+    [Header("sprite")]
     public Sprite sprite;
 
 }

@@ -19,4 +19,7 @@ MonoBehaviour:
   isGold: 1
   bomb: 0
   isKey: 0
+  isChest: 0
+  isLive: 0
+  isCoin: 1
   sprite: {fileID: 6680314957467710897, guid: b8cb59d863239334ea41d8560a0914fb, type: 3}
