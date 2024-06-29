@@ -11,6 +11,9 @@ public class PropEntity : MonoBehaviour {
 
     [SerializeField] Rigidbody2D rb2D;
 
+    [SerializeField] public Animator animatior;
+
+
 
     public int id;
 
@@ -69,6 +72,10 @@ public class PropEntity : MonoBehaviour {
         rb2D.bodyType = type;
         rb2D.constraints = RigidbodyConstraints2D.FreezePositionY;
 
+    }
+
+
+    public void SetAnim(AnimationClip  clip) {
     }
     public void TearDown() {
         GameObject.Destroy(this.gameObject);

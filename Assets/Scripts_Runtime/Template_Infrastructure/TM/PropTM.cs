@@ -31,4 +31,7 @@ public class PropTM : ScriptableObject {
     [Header("sprite")]
     public Sprite sprite;
 
+    [Header("animation")]   
+
+    public Animator animator;
 }
