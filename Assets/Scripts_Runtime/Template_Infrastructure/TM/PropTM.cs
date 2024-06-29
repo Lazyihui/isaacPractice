@@ -19,6 +19,8 @@ public class PropTM : ScriptableObject {
 
     public bool isKey;
 
+    public bool isChest;
+
     public Sprite sprite;
 
 }

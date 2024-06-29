@@ -33,7 +33,7 @@ public class PropEntity : MonoBehaviour {
     // 是什么种类
     public bool isGold;
 
-    public bool bomb;
+    public bool isbomb;
 
     public bool isKey;
 

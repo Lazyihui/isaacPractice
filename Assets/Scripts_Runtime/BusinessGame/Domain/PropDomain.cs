@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 
 public static class PropDomain {
-    public static PropEntity Spawn(GameContext ctx, Vector2 pos, int typeID) {
+    public static PropEntity Spawn(GameContext ctx, Vector2 pos, int typeID, int nextLevelID) {
         ctx.assetsContext.TryGetEntity("Prop_Entity", out GameObject prefab);
 
         bool has = ctx.templateContext.props.TryGetValue(typeID, out PropTM tm);
@@ -23,7 +23,12 @@ public static class PropDomain {
         prop.isEnter = tm.isEnter;
         prop.isObstacle = tm.isObstacle;
         prop.isFigure = tm.isFigure;
+        prop.isGold = tm.isGold;
+        prop.isbomb = tm.bomb;
+        prop.isKey = tm.isKey;
+        prop.isChest = tm.isChest;
         prop.id = ctx.gameEntity.propRecordID;
+        prop.nextLevelID = nextLevelID;
         ctx.gameEntity.propRecordID++;
         ctx.propRespository.Add(prop);
         return prop;
@@ -37,31 +42,21 @@ public static class PropDomain {
     public static void BoolisTrigger(GameContext ctx, PropEntity prop) {
         if (prop.isEnter) {
             prop.SetCollider(true);
-        }
-
-        if (prop.isObstacle) {
+        }else{
             prop.SetCollider(false);
         }
 
-        if (prop.isFigure) {
-            prop.SetCollider(true);
-        }
+
 
     }
 
     public static void ToSpawnIsTriggerProp(GameContext ctx) {
-        PropEntity prop = Spawn(ctx, new Vector2(-13, 1), 0);
-        prop.nextLevelID = 3;
-        PropEntity prop1 = Spawn(ctx, new Vector2(-1f, 8.5f), 0);
-        prop1.nextLevelID = 1;
-        PropEntity prop2 = Spawn(ctx, new Vector2(13, 1), 0);
-        prop2.nextLevelID = 4;
-        PropEntity prop3 = Spawn(ctx, new Vector2(0, -7), 0);
-        prop3.nextLevelID = 2;
-        PropEntity prop4 = Spawn(ctx, new Vector2(13, -0.5f), 0);
-        prop4.nextLevelID = 4;
-        PropEntity prop5 = Spawn(ctx, new Vector2(-13, -0.5f), 0);
-        prop5.nextLevelID = 3;
+        PropEntity prop = Spawn(ctx, new Vector2(-13, 1), 0, 3);
+        PropEntity prop1 = Spawn(ctx, new Vector2(-1f, 8.5f), 0, 1);
+        PropEntity prop2 = Spawn(ctx, new Vector2(13, 1), 0, 4);
+        PropEntity prop3 = Spawn(ctx, new Vector2(0, -7), 0, 2);
+        PropEntity prop4 = Spawn(ctx, new Vector2(13, -0.5f), 0, 4);
+        PropEntity prop5 = Spawn(ctx, new Vector2(-13, -0.5f), 0, 3);
     }
 
     public static void SetRigidbody(GameContext ctx, PropEntity prop) {
@@ -134,11 +129,16 @@ public static class PropDomain {
 
             for (int i = 0; i < len; i++) {
                 RoleEntity role = roles[i];
+                Debug.Log("0" + role.transform.position);
                 float dirSqr = Vector2.SqrMagnitude(role.transform.position - prop.transform.position);
                 if (dirSqr < 1.0f) {
-                    PropDomain.Spawn(ctx, new Vector2(prop.transform.position.x - 1, prop.transform.position.y - 1), PropConst.GOLD);
-                    PropDomain.Spawn(ctx, new Vector2(prop.transform.position.x + 1, prop.transform.position.y + 1), PropConst.GOLD);
-                    PropDomain.Spawn(ctx, new Vector2(prop.transform.position.x - 1, prop.transform.position.y + 3), PropConst.GOLD);
+                    Debug.Log("1" + role.transform.position);
+                    Vector2 pos = prop.transform.position;
+                    PropDomain.Spawn(ctx, new Vector2(pos.x - 1, pos.y - 1), PropConst.GOLD, 0);
+                    PropDomain.Spawn(ctx, new Vector2(pos.x + 1, pos.y + 1), PropConst.GOLD, 0);
+                    PropDomain.Spawn(ctx, new Vector2(pos.x - 1, pos.y + 3), PropConst.GOLD, 0);
+                    Debug.Log("2" + role.transform.position);
+
                 }
             }
 

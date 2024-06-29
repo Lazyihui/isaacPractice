@@ -18,5 +18,6 @@ MonoBehaviour:
   isFigure: 1
   isGold: 0
   bomb: 0
-  isKey: 1
+  isKey: 0
+  isChest: 1
   sprite: {fileID: 4003563873750686401, guid: 4a02a9d12271f914685e30e9f7e4b568, type: 3}
