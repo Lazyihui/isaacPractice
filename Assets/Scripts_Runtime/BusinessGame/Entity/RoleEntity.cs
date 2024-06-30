@@ -8,16 +8,19 @@ public class RoleEntity : MonoBehaviour {
     [SerializeField] Rigidbody2D rb;
 
     [SerializeField] public Animator animatior;
+
+    [SerializeField] SpriteRenderer sprRd;
     public float moveSpeed;
 
-
+    // 每个人都有的
     public int id;
 
     public int typeID;
-    
+
+    // 二选一的
     public bool isRole;
 
-
+    public bool isEnemy;
 
     // 状态机
     public RoleFSMStatus status;
@@ -28,22 +31,12 @@ public class RoleEntity : MonoBehaviour {
 
 
     // 植物的cd
-    public float cd;
-
-    public float maxCd;
-
-    public float maintain;
-
-    public float maintainTimer;
-
     public float interval;
 
     public float intervalTimer;
 
-
-    // mst素材信息
-
-
+    // Enmey1素材信息
+    
 
     public void Ctor() {
 
@@ -64,6 +57,10 @@ public class RoleEntity : MonoBehaviour {
 
     public void SetPos(Vector2 pos) {
         transform.position = pos;
+    }
+
+    public void SetSprite(Sprite sprite) {
+        sprRd.sprite = sprite;
     }
     public void TearDown() {
         GameObject.Destroy(this.gameObject);

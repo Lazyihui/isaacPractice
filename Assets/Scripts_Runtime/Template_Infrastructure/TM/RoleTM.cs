@@ -22,6 +22,8 @@ public class RoleTM : ScriptableObject {
 
     public RuntimeAnimatorController animator;
 
+    public Sprite sprite;
+
 
 
 }

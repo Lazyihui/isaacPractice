@@ -18,8 +18,9 @@ public static class RoleDomain {
         RoleEntity role = go.GetComponent<RoleEntity>();
         role.typeID = tm.typeID;
 
-        role.SetPos(pos);
         role.Ctor();
+        role.SetPos(pos);
+        role.SetSprite(tm.sprite);
 
         role.moveSpeed = tm.moveSpeed;
         role.interval = tm.interval;
