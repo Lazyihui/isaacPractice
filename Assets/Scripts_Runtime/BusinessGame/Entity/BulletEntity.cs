@@ -20,6 +20,8 @@ public class BulletEntity : MonoBehaviour {
 
     public float intervalTimer;
 
+    public bool isRoleBullet;
+    public bool isEnemyBullet;
 
     public void Ctor() {
 

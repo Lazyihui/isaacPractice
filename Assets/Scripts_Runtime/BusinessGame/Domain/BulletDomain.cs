@@ -47,6 +47,16 @@ public static class BulletDomain {
 
     }
 
+    // enemy_1 bullet 的移动 
+    public static void Enemy_1_Move(GameContext ctx, BulletEntity bullet,RoleEntity player, float dt) {
+    // 向player移动
+        Vector2 dir = player.transform.position - bullet.transform.position;
+        dir.Normalize();
+        bullet.Move(dir, dt);
+
+    }
+
+
     public static void UnSpawn(GameContext ctx, BulletEntity bullet) {
         ctx.bulletRespository.Remove(bullet);
         bullet.TearDown();

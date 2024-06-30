@@ -20,7 +20,7 @@ public class RoleEntity : MonoBehaviour {
     // 二选一的
     public bool isRole;
 
-    public bool isEnemy;
+    public bool isEnemy_1;
 
     // 状态机
     public RoleFSMStatus status;
@@ -36,6 +36,8 @@ public class RoleEntity : MonoBehaviour {
     public float intervalTimer;
 
     // Enmey1素材信息
+
+
     
 
     public void Ctor() {

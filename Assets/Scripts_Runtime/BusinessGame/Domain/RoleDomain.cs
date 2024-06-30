@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class RoleDomain {
 
-    public static RoleEntity Spawn(GameContext ctx,Vector2 pos,int typeID) {
+    public static RoleEntity Spawn(GameContext ctx, Vector2 pos, int typeID) {
         ctx.assetsContext.TryGetEntity("Role_Entity", out GameObject prefab);
 
         bool has = ctx.templateContext.roles.TryGetValue(typeID, out RoleTM tm);
@@ -26,6 +26,7 @@ public static class RoleDomain {
         role.interval = tm.interval;
         role.intervalTimer = tm.intervalTimer;
         role.isRole = tm.isRole;
+        role.isEnemy_1 = tm.isEnemy_1;
         role.animatior.runtimeAnimatorController = tm.animator;
         // role.interval = 3;
         // role.intervalTimer = 3;
@@ -76,6 +77,34 @@ public static class RoleDomain {
 
 
         }
+
+    }
+
+    // enemy 和 player 的大范围的检测 检测到enmey 就会自动攻击
+    public static void EnemyToAttack(GameContext ctx, RoleEntity enemy, float dt) {
+        int len = ctx.roleRespository.TakeAll(out RoleEntity[] array);
+     
+        for (int i = 0; i < len; i++) {
+            RoleEntity item = array[i];
+            if (item.isRole) {
+                continue;
+            }
+            float dis = Vector2.Distance(enemy.transform.position, item.transform.position);
+
+            if (dis < 2) {
+        
+                enemy.intervalTimer -= dt;
+                if (enemy.intervalTimer <= 0) {
+                    
+                    BulletEntity bullet = BulletDomain.Spawn(ctx, enemy.transform.position);
+
+                    enemy.intervalTimer = enemy.interval;
+                }
+            
+            
+            }
+        }
+
 
     }
 
