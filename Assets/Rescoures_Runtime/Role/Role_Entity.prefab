@@ -149,12 +149,9 @@ MonoBehaviour:
   id: 0
   typeID: 0
   isRole: 0
+  isEnemy: 0
   status: 0
   idle_isEntering: 0
-  cd: 0
-  maxCd: 0
-  maintain: 0
-  maintainTimer: 0
   interval: 0
   intervalTimer: 0
 --- !u!1 &7887053341220334026
@@ -255,7 +252,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 5986909737524308568, guid: 711533ab388b29d4c834314226cec5ec, type: 3}
+  m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -263,6 +260,6 @@ SpriteRenderer:
   m_Size: {x: 2, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0

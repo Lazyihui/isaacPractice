@@ -41,7 +41,7 @@ public class TemplateInfra {
                 ctx.roles.Add(go.typeID, go);
             }
             ctx.rolePtr = ptr;
-        
+
         }
 
     }

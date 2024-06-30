@@ -104,6 +104,13 @@ public static class Game_Business {
 
         PropDomain.ToSpawnIsTriggerProp(ctx);
 
+
+        // 生成敌人
+        RoleDomain.Spawn(ctx, new Vector2(-10.5f, 6), RoleConst.ENEMY_1);
+        // RoleDomain.Spawn(ctx, new Vector2(-10.5f, -5), RoleConst.ENEMY_1);
+        // RoleDomain.Spawn(ctx, new Vector2(10.5f, -6), RoleConst.ENEMY_1);
+        // RoleDomain.Spawn(ctx, new Vector2(10.5f, 6), RoleConst.ENEMY_1);
+
     }
 
 
@@ -158,12 +165,12 @@ public static class Game_Business {
             if (role.isRole) {
 
                 RoleDomain.Move(ctx, role, ctx.moduleInput.moveAxis, dt);
-                RoleFSMConteoller.Tick(ctx, role, dt);
                 RoleDomain.ToSpawnBullet(ctx, role, dt);
                 Debug.Log("Role" + role.transform.position);
-            } else {
-
+            } else if(role.isEnemy&&role.typeID==RoleConst.ENEMY_1) {
             }
+
+            RoleFSMConteoller.Tick(ctx, role, dt);
 
 
         }
