@@ -16,7 +16,7 @@ public static class RoleDomain {
 
         GameObject go = GameObject.Instantiate(prefab);
         RoleEntity role = go.GetComponent<RoleEntity>();
-        role.typeID = tm.typeID;
+        role.typeID = typeID;
 
         role.Ctor();
         role.SetPos(pos);
@@ -30,8 +30,7 @@ public static class RoleDomain {
         // role.interval = 3;
         // role.intervalTimer = 3;
 
-        role.id = ctx.gameEntity.roleRecordID;
-        ctx.gameEntity.roleRecordID++;
+        role.id = ctx.gameEntity.roleRecordID++;
         ctx.roleRespository.Add(role);
         return role;
 

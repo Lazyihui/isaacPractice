@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12e330e2d79519a409e3067edc0d3ff8, type: 3}
   m_Name: TM_1Role
   m_EditorClassIdentifier: 
-  typeID: 1
+  typeID: 100
   isRole: 0
   moveSpeed: 0
   interval: 0

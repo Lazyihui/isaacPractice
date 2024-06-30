@@ -46,8 +46,8 @@ public static class Game_Business {
         } else if (ctx.gameEntity.nextLevelID == 4) {
             pos = new Vector2(-11.5f, 1);
         }
-        RoleDomain.Spawn(ctx, pos, RoleConst.PLAYER);
         ctx.gameEntity.Init();
+        RoleDomain.Spawn(ctx, pos, RoleConst.PLAYER);
         MapDomain.Spawn(ctx, 2);
         PropDomain.Spawn(ctx, new Vector2(3, 1), PropConst.CHEST, 0);
 
@@ -68,9 +68,8 @@ public static class Game_Business {
             pos = new Vector2(-11.5f, 1);
         }
 
-
-        RoleDomain.Spawn(ctx, pos, RoleConst.PLAYER);
         ctx.gameEntity.Init();
+        RoleDomain.Spawn(ctx, pos, RoleConst.PLAYER);
         MapDomain.Spawn(ctx, 3);
         // 左上角
         PropDomain.Spawn(ctx, new Vector2(-11.5f, 7), PropConst.OBSTACLE, 0);
@@ -107,9 +106,9 @@ public static class Game_Business {
 
         // 生成敌人
         RoleDomain.Spawn(ctx, new Vector2(-10.5f, 6), RoleConst.ENEMY_1);
-        // RoleDomain.Spawn(ctx, new Vector2(-10.5f, -5), RoleConst.ENEMY_1);
-        // RoleDomain.Spawn(ctx, new Vector2(10.5f, -6), RoleConst.ENEMY_1);
-        // RoleDomain.Spawn(ctx, new Vector2(10.5f, 6), RoleConst.ENEMY_1);
+        RoleDomain.Spawn(ctx, new Vector2(-10.5f, -5), RoleConst.ENEMY_1);
+        RoleDomain.Spawn(ctx, new Vector2(10.5f, -5), RoleConst.ENEMY_1);
+        RoleDomain.Spawn(ctx, new Vector2(10.5f, 6), RoleConst.ENEMY_1);
 
     }
 
@@ -167,7 +166,7 @@ public static class Game_Business {
                 RoleDomain.Move(ctx, role, ctx.moduleInput.moveAxis, dt);
                 RoleDomain.ToSpawnBullet(ctx, role, dt);
                 Debug.Log("Role" + role.transform.position);
-            } else if(role.isEnemy&&role.typeID==RoleConst.ENEMY_1) {
+            } else if (role.isEnemy && role.typeID == RoleConst.ENEMY_1) {
             }
 
             RoleFSMConteoller.Tick(ctx, role, dt);
