@@ -15,7 +15,12 @@ MonoBehaviour:
   typeID: 1
   isEnter: 0
   isObstacle: 1
+  isFigure: 0
   isGold: 0
   bomb: 0
   isKey: 0
-  sprite: {fileID: -5940014709222713881, guid: 07907da5bd663624aa97cb4127fda5ce, type: 3}
+  isChest: 0
+  isLive: 0
+  isCoin: 0
+  sprite: {fileID: 7941823211702965693, guid: 07907da5bd663624aa97cb4127fda5ce, type: 3}
+  animator: {fileID: 0}

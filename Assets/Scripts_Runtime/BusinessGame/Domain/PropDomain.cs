@@ -36,6 +36,8 @@ public static class PropDomain {
 
         prop.animatior.runtimeAnimatorController = tm.animator;
         prop.id = ctx.gameEntity.propRecordID;
+
+        // 1 表示上面 2 表示下面 3 表示左边 4 表示右边 只有入口才有 其他都是0
         prop.nextLevelID = nextLevelID;
         ctx.gameEntity.propRecordID++;
         ctx.propRespository.Add(prop);

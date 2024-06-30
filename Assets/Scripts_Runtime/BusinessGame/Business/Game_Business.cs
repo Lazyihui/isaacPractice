@@ -56,6 +56,58 @@ public static class Game_Business {
 
     }
 
+    public static void Next_Level_hasEnemy(GameContext ctx) {
+        Vector2 pos = Vector2.zero;
+        if (ctx.gameEntity.nextLevelID == 1) {
+            pos = new Vector2(0, -5.5f);
+        } else if (ctx.gameEntity.nextLevelID == 2) {
+            pos = new Vector2(-1, 7.5f);
+        } else if (ctx.gameEntity.nextLevelID == 3) {
+            pos = new Vector2(11.5f, 0.5f);
+        } else if (ctx.gameEntity.nextLevelID == 4) {
+            pos = new Vector2(-11.5f, 1);
+        }
+
+
+        RoleDomain.Spawn(ctx, pos, RoleConst.PLAYER);
+        ctx.gameEntity.Init();
+        MapDomain.Spawn(ctx, 3);
+        // 左上角
+        PropDomain.Spawn(ctx, new Vector2(-11.5f, 7), PropConst.OBSTACLE, 0);
+        PropDomain.Spawn(ctx, new Vector2(-11.5f, 6), PropConst.OBSTACLE, 0);
+        PropDomain.Spawn(ctx, new Vector2(-11.5f, 5), PropConst.OBSTACLE, 0);
+        PropDomain.Spawn(ctx, new Vector2(-10.5f, 7), PropConst.OBSTACLE, 0);
+        PropDomain.Spawn(ctx, new Vector2(-9.5f, 7), PropConst.OBSTACLE, 0);
+        PropDomain.Spawn(ctx, new Vector2(-9.5f, 6), PropConst.OBSTACLE, 0);
+        // 左下角
+        PropDomain.Spawn(ctx, new Vector2(-11.5f, -6), PropConst.OBSTACLE, 0);
+        PropDomain.Spawn(ctx, new Vector2(-11.5f, -5), PropConst.OBSTACLE, 0);
+        PropDomain.Spawn(ctx, new Vector2(-11.5f, -4), PropConst.OBSTACLE, 0);
+        PropDomain.Spawn(ctx, new Vector2(-10.5f, -6), PropConst.OBSTACLE, 0);
+        PropDomain.Spawn(ctx, new Vector2(-9.5f, -6), PropConst.OBSTACLE, 0);
+        PropDomain.Spawn(ctx, new Vector2(-9.5f, -5), PropConst.OBSTACLE, 0);
+        //右下角
+        PropDomain.Spawn(ctx, new Vector2(11.5f, -6), PropConst.OBSTACLE, 0);
+        PropDomain.Spawn(ctx, new Vector2(11.5f, -5), PropConst.OBSTACLE, 0);
+        PropDomain.Spawn(ctx, new Vector2(11.5f, -4), PropConst.OBSTACLE, 0);
+        PropDomain.Spawn(ctx, new Vector2(10.5f, -6), PropConst.OBSTACLE, 0);
+        PropDomain.Spawn(ctx, new Vector2(9.5f, -6), PropConst.OBSTACLE, 0);
+        PropDomain.Spawn(ctx, new Vector2(9.5f, -5), PropConst.OBSTACLE, 0);
+
+        //右上角
+        PropDomain.Spawn(ctx, new Vector2(11.5f, 7), PropConst.OBSTACLE, 0);
+        PropDomain.Spawn(ctx, new Vector2(11.5f, 6), PropConst.OBSTACLE, 0);
+        PropDomain.Spawn(ctx, new Vector2(11.5f, 5), PropConst.OBSTACLE, 0);
+        PropDomain.Spawn(ctx, new Vector2(10.5f, 7), PropConst.OBSTACLE, 0);
+        PropDomain.Spawn(ctx, new Vector2(9.5f, 7), PropConst.OBSTACLE, 0);
+        PropDomain.Spawn(ctx, new Vector2(9.5f, 6), PropConst.OBSTACLE, 0);
+
+        PropDomain.ToSpawnIsTriggerProp(ctx);
+
+    }
+
+
+
     public static void Load_Game(GameContext ctx) {
 
     }
@@ -108,9 +160,9 @@ public static class Game_Business {
                 RoleDomain.Move(ctx, role, ctx.moduleInput.moveAxis, dt);
                 RoleFSMConteoller.Tick(ctx, role, dt);
                 RoleDomain.ToSpawnBullet(ctx, role, dt);
-
+                Debug.Log("Role" + role.transform.position);
             } else {
-                
+
             }
 
 
@@ -155,7 +207,11 @@ public static class Game_Business {
             BulletDomain.CloseAll(ctx);
             PropDomain.CloseAll(ctx);
             MapDomain.CloseAll(ctx);
-            Next_Level(ctx);
+            if (ctx.gameEntity.nextLevelID == 2) {
+                Next_Level_hasEnemy(ctx);
+            } else {
+                Next_Level(ctx);
+            }
         }
 
 
