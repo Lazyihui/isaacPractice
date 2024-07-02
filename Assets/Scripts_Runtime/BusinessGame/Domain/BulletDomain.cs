@@ -2,13 +2,10 @@ using System;
 using UnityEngine;
 
 public static class BulletDomain {
-    public static BulletEntity Spawn(GameContext ctx, Vector2 pos) {
-        bool has = ctx.assetsContext.TryGetEntity("Bullet_Entity", out GameObject prefab);
+    public static BulletEntity Spawn(GameContext ctx, Vector2 pos, int typeID) {
+        ctx.assetsContext.TryGetEntity("Bullet_Entity", out GameObject prefab);
 
-        if (!has) {
-            Debug.LogError("BulletEntity not found");
-            return null;
-        }
+        bool has = ctx.templateContext.bullets.TryGetValue(typeID, out BulletTM tm);
 
         GameObject go = GameObject.Instantiate(prefab);
         BulletEntity bullet = go.GetComponent<BulletEntity>();
@@ -17,10 +14,15 @@ public static class BulletDomain {
         // bullet.SetSprite(ctx.assetsContext.GetSprite("Bullet_Sprite"));
         bullet.SetRB(RigidbodyType2D.Kinematic);
         bullet.dir = 0;
-        bullet.moveDistance = 0;
-        bullet.maxDistance = 7;
+        bullet.moveDistance = tm.moveDistance;
+        bullet.maxDistance = tm.maxDistance;
 
-        bullet.intervalTimer = 5;
+        bullet.intervalTimer = tm.intervalTimer;
+
+        bullet.moveSpeed = tm.moveSpeed;
+
+        bullet.isRoleBullet = tm.isRoleBullet;
+        bullet.isEnemyBullet = tm.isEnemyBullet;
 
         bullet.id = ctx.gameEntity.bulletRecordID;
         ctx.gameEntity.bulletRecordID++;
@@ -49,8 +51,8 @@ public static class BulletDomain {
     }
 
     // enemy_1 bullet 的移动 
-    public static void Enemy_1_Move(GameContext ctx, BulletEntity bullet,RoleEntity player, float dt) {
-    // 向player移动
+    public static void Enemy_1_Move(GameContext ctx, BulletEntity bullet, RoleEntity player, float dt) {
+        // 向player移动
         Vector2 dir = player.transform.position - bullet.transform.position;
         dir.Normalize();
         bullet.Move(dir, dt);

@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 639a65ddcf102534083a598882ff601b, type: 3}
   m_Name: TM_1Bullet
   m_EditorClassIdentifier: 
+  moveSpeed: 0.5
+  intervalTimer: 15
+  isRoleBullet: 0
   typeID: 1
-  moveSpeed: 5
-  intervalTimer: 5
   moveDistance: 0
   maxDistance: 0
-  isRoleBullet: 0
   isEnemyBullet: 1
   sprite: {fileID: 7941823211702965693, guid: 07907da5bd663624aa97cb4127fda5ce, type: 3}
