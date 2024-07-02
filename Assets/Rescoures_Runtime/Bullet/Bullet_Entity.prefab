@@ -80,8 +80,6 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
-  m_RayTracingAccelStructBuildFlagsOverride: 0
-  m_RayTracingAccelStructBuildFlags: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -192,8 +190,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 4347834567437461274}
+  sprRd: {fileID: 8134005639928775674}
   id: 0
   moveSpeed: 1
   dir: 0
   moveDistance: 0
   maxDistance: 0
+  intervalTimer: 0
+  isRoleBullet: 0
+  isEnemyBullet: 0

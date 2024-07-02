@@ -89,6 +89,18 @@ MonoBehaviour:
     m_SerializedLabels:
     - TM_Role
     FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 48b45d14dffbd8b43862723361eaa4f9
+    m_Address: Assets/Rescoures_Runtime/Bullet/TM/TM_1Bullet.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TM_Bullet
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 37eb7f4be40218641a40b4bc5e30d034
+    m_Address: Assets/Rescoures_Runtime/Bullet/TM/TM_0Bullet.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - TM_Bullet
+    FlaggedDuringContentUpdateRestriction: 0
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: e5254b1df25cd434bb2af38936243e4e, type: 2}
   m_SchemaSet:

@@ -14,6 +14,7 @@ public static class BulletDomain {
         BulletEntity bullet = go.GetComponent<BulletEntity>();
         bullet.Ctor();
         bullet.SetPos(pos);
+        // bullet.SetSprite(ctx.assetsContext.GetSprite("Bullet_Sprite"));
         bullet.SetRB(RigidbodyType2D.Kinematic);
         bullet.dir = 0;
         bullet.moveDistance = 0;

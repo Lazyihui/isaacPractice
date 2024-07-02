@@ -7,6 +7,7 @@ public class BulletEntity : MonoBehaviour {
 
     [SerializeField] Rigidbody2D rb;
 
+    [SerializeField] SpriteRenderer sprRd;
     public int id;
 
     [SerializeField] public float moveSpeed = 0.5f;
@@ -42,10 +43,15 @@ public class BulletEntity : MonoBehaviour {
         rb.bodyType = type;
     }
 
+    public void SetSprite(Sprite sprite) {
+        sprRd.sprite = sprite;
+    }
+
+
     public void TearDown() {
         GameObject.Destroy(gameObject);
     }
-
+    
 
 
 }

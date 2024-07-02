@@ -125,7 +125,6 @@ public static class Game_Business {
 
         PreTick(ctx, dt);
 
-
         ref float restFixTime = ref ctx.gameEntity.restFixTime;
 
         restFixTime += dt;
@@ -169,7 +168,6 @@ public static class Game_Business {
                 Debug.Log("Enemy_1" + role.transform.position);
                 RoleDomain.EnemyToAttack(ctx, role, dt);
             }
-
             RoleFSMConteoller.Tick(ctx, role, dt);
 
 

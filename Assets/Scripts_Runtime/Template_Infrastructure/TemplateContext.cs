@@ -20,10 +20,15 @@ public class TemplateContext {
     public Dictionary<int, RoleTM> roles;
 
     public AsyncOperationHandle rolePtr;    
+
+    public Dictionary<int, BulletTM> bullets;
+
+    public AsyncOperationHandle bulletPtr;
     public TemplateContext() {
         props = new Dictionary<int, PropTM>();
         figureEles = new Dictionary<int, FigureElementTM>();
         roles = new Dictionary<int, RoleTM>();
+        bullets = new Dictionary<int, BulletTM>();
     }
 
 }
