@@ -13,7 +13,7 @@ public static class BulletDomain {
         bullet.SetPos(pos);
         // bullet.SetSprite(ctx.assetsContext.GetSprite("Bullet_Sprite"));
         bullet.SetRB(RigidbodyType2D.Kinematic);
-        bullet.dir = 0;
+        bullet.dir_player = 0;
         bullet.moveDistance = tm.moveDistance;
         bullet.maxDistance = tm.maxDistance;
 
@@ -32,19 +32,19 @@ public static class BulletDomain {
 
     public static void Move(GameContext ctx, BulletEntity bullet, float dt) {
 
-        if (bullet.dir == 0) {
+        if (bullet.dir_player == 0) {
             bullet.Move(Vector2.down, dt);
         }
 
-        if (bullet.dir == 1) {
+        if (bullet.dir_player == 1) {
             bullet.Move(Vector2.up, dt);
         }
 
-        if (bullet.dir == 2) {
+        if (bullet.dir_player == 2) {
             bullet.Move(Vector2.left, dt);
         }
 
-        if (bullet.dir == 3) {
+        if (bullet.dir_player == 3) {
             bullet.Move(Vector2.right, dt);
         }
 
@@ -53,7 +53,7 @@ public static class BulletDomain {
     // enemy_1 bullet 的移动 
     public static void Enemy_1_Move(GameContext ctx, BulletEntity bullet, RoleEntity player, float dt) {
         // 向player移动
-        Vector2 dir = player.transform.position - bullet.transform.position;
+        Vector2 dir =bullet.dir_Enmeny1;
         dir.Normalize();
         bullet.Move(dir, dt);
 

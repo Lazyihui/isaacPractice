@@ -9,7 +9,7 @@ public class Main : MonoBehaviour {
     void Awake() {
         ctx = new MainContex();
         Canvas screenCanvas = GameObject.Find("Canvas").GetComponent<Canvas>();
-        
+
 
         // === init===
 
@@ -30,6 +30,7 @@ public class Main : MonoBehaviour {
         float dt = Time.deltaTime;
 
         Game_Business.Tick(ctx.gameContext, dt);
+
     }
     void OnDestory() {
         TearDown();

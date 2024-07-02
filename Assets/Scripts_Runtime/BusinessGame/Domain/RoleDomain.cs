@@ -49,28 +49,28 @@ public static class RoleDomain {
 
             if (Input.GetKeyDown(KeyCode.UpArrow)) {
                 BulletEntity bullet = BulletDomain.Spawn(ctx, role.transform.position, 0);
-                bullet.dir = 1;
+                bullet.dir_player = 1;
                 role.intervalTimer = role.interval;
 
             }
 
             if (Input.GetKeyDown(KeyCode.DownArrow)) {
                 BulletEntity bullet = BulletDomain.Spawn(ctx, role.transform.position, 0);
-                bullet.dir = 0;
+                bullet.dir_player = 0;
                 role.intervalTimer = role.interval;
 
             }
 
             if (Input.GetKeyDown(KeyCode.LeftArrow)) {
                 BulletEntity bullet = BulletDomain.Spawn(ctx, role.transform.position, 0);
-                bullet.dir = 2;
+                bullet.dir_player = 2;
                 role.intervalTimer = role.interval;
 
             }
 
             if (Input.GetKeyDown(KeyCode.RightArrow)) {
                 BulletEntity bullet = BulletDomain.Spawn(ctx, role.transform.position, 0);
-                bullet.dir = 3;
+                bullet.dir_player = 3;
                 role.intervalTimer = role.interval;
 
             }
@@ -81,25 +81,29 @@ public static class RoleDomain {
     }
 
     // enemy 和 player 的大范围的检测 检测到enmey 就会自动攻击
-    public static void EnemyToAttack(GameContext ctx, RoleEntity enemy, float dt) {
+    public static void EnemyToAttack(GameContext ctx, RoleEntity player, float dt) {
         int len = ctx.roleRespository.TakeAll(out RoleEntity[] array);
 
         for (int i = 0; i < len; i++) {
-            RoleEntity item = array[i];
-            if (item.isRole) {
+            RoleEntity enemey = array[i];
+            if (enemey.isRole) {
+            }else{
                 continue;
             }
-            float dis = Vector2.Distance(enemy.transform.position, item.transform.position);
-            
-            if (Input.GetKeyDown(KeyCode.Space)) {
-                Debug.Log("dis:" + dis);
+
+
+            float dis =Vector2.SqrMagnitude(player.transform.position - enemey.transform.position);
+            if(Input.GetKeyDown(KeyCode.Space)){
+                Debug.Log(player.id+"距离" + dis);
             }
 
-            if (dis < 1) {
-                enemy.intervalTimer -= dt;
-                if (enemy.intervalTimer <= 0) {
-                    BulletEntity bullet = BulletDomain.Spawn(ctx, enemy.transform.position, 1);
-                    enemy.intervalTimer = enemy.interval;
+            if (dis < 60) {
+                player.intervalTimer -= dt;
+                if (player.intervalTimer <= 0) {
+                    BulletEntity bullet = BulletDomain.Spawn(ctx, player.transform.position, 1);
+                    bullet.dir_Enmeny1 = enemey.transform.position - player.transform.position;
+
+                    player.intervalTimer = player.interval;
                 }
 
 
