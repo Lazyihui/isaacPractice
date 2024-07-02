@@ -30,13 +30,13 @@ public class RoleEntity : MonoBehaviour {
 
 
 
-    // 植物的cd
+    // 子弹的cd
     public float interval;
 
     public float intervalTimer;
 
     // Enmey1素材信息
-
+    
 
     
 

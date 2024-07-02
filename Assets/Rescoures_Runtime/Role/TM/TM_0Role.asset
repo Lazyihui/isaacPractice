@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12e330e2d79519a409e3067edc0d3ff8, type: 3}
   m_Name: TM_0Role
   m_EditorClassIdentifier: 
+  isEnemy_1: 0
   typeID: 0
   isRole: 1
   moveSpeed: 5
-  interval: 3
-  intervalTimer: 3
+  interval: 5
+  intervalTimer: 5
   animator: {fileID: 9100000, guid: 18efb818b1d66404ca0f13e7d3a719c4, type: 2}
   sprite: {fileID: 5986909737524308568, guid: 711533ab388b29d4c834314226cec5ec, type: 3}

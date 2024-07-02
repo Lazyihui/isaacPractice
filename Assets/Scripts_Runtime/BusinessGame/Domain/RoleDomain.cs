@@ -48,28 +48,28 @@ public static class RoleDomain {
         if (role.intervalTimer <= 0) {
 
             if (Input.GetKeyDown(KeyCode.UpArrow)) {
-                BulletEntity bullet = BulletDomain.Spawn(ctx, role.transform.position,0);
+                BulletEntity bullet = BulletDomain.Spawn(ctx, role.transform.position, 0);
                 bullet.dir = 1;
                 role.intervalTimer = role.interval;
 
             }
 
             if (Input.GetKeyDown(KeyCode.DownArrow)) {
-                BulletEntity bullet = BulletDomain.Spawn(ctx, role.transform.position,0);
+                BulletEntity bullet = BulletDomain.Spawn(ctx, role.transform.position, 0);
                 bullet.dir = 0;
                 role.intervalTimer = role.interval;
 
             }
 
             if (Input.GetKeyDown(KeyCode.LeftArrow)) {
-                BulletEntity bullet = BulletDomain.Spawn(ctx, role.transform.position,0);
+                BulletEntity bullet = BulletDomain.Spawn(ctx, role.transform.position, 0);
                 bullet.dir = 2;
                 role.intervalTimer = role.interval;
 
             }
 
             if (Input.GetKeyDown(KeyCode.RightArrow)) {
-                BulletEntity bullet = BulletDomain.Spawn(ctx, role.transform.position,0);
+                BulletEntity bullet = BulletDomain.Spawn(ctx, role.transform.position, 0);
                 bullet.dir = 3;
                 role.intervalTimer = role.interval;
 
@@ -83,23 +83,26 @@ public static class RoleDomain {
     // enemy 和 player 的大范围的检测 检测到enmey 就会自动攻击
     public static void EnemyToAttack(GameContext ctx, RoleEntity enemy, float dt) {
         int len = ctx.roleRespository.TakeAll(out RoleEntity[] array);
-     
+
         for (int i = 0; i < len; i++) {
             RoleEntity item = array[i];
             if (item.isRole) {
                 continue;
             }
             float dis = Vector2.Distance(enemy.transform.position, item.transform.position);
+            
+            if (Input.GetKeyDown(KeyCode.Space)) {
+                Debug.Log("dis:" + dis);
+            }
 
-            if (dis < 2) {
-        
+            if (dis < 1) {
                 enemy.intervalTimer -= dt;
                 if (enemy.intervalTimer <= 0) {
-                    BulletEntity bullet = BulletDomain.Spawn(ctx, enemy.transform.position,1);
+                    BulletEntity bullet = BulletDomain.Spawn(ctx, enemy.transform.position, 1);
                     enemy.intervalTimer = enemy.interval;
                 }
-            
-            
+
+
             }
         }
 

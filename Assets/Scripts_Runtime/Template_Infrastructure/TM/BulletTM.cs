@@ -7,6 +7,7 @@ public class BulletTM : ScriptableObject {
     public float moveSpeed;
 
     public float intervalTimer;
+
     [Header("Player")]
     public bool isRoleBullet;
 

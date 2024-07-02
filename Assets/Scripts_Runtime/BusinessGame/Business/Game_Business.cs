@@ -183,7 +183,6 @@ public static class Game_Business {
                 BulletDomain.BeyondBoundaryToUnSpawn(ctx, bullet);
                 BulletDomain.MoveDistanceToUnSpawn(ctx, bullet, dt);
             } else if (bullet.isEnemyBullet) {
-                BulletDomain.BeyondBoundaryToUnSpawn(ctx, bullet);
                 BulletDomain.Enemy_1_Move(ctx, bullet, roles[0], dt);
 
             }
