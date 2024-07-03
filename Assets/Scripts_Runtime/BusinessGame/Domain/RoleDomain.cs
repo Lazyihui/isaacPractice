@@ -26,15 +26,36 @@ public static class RoleDomain {
         role.interval = tm.interval;
         role.intervalTimer = tm.intervalTimer;
         role.isRole = tm.isRole;
-        role.isEnemy_1 = tm.isEnemy_1;
         role.animatior.runtimeAnimatorController = tm.animator;
-        // role.interval = 3;
-        // role.intervalTimer = 3;
+
+        role.isEnemy_1 = tm.isEnemy_1;
+        role.enmeny_1_Hp = tm.enmeny_1_Hp;
+
+
 
         role.id = ctx.gameEntity.roleRecordID++;
         ctx.roleRespository.Add(role);
         return role;
 
+    }
+    // player 死亡的函数//相当于游戏结束
+    public static void Player_Die(GameContext ctx, RoleEntity role) {
+        // 外面这个判断好像是多余的
+        if (role.isRole) {
+            if (ctx.gameEntity.hp <= 0) {
+                UnSpawn(ctx, role);
+            }
+        }
+    }
+
+    // enemy 的死亡
+    public static void Enemy_1_Die(GameContext ctx, RoleEntity enemy) { 
+        // 外面这个判断好像是多余的
+        if (enemy.isEnemy_1) {
+            if (enemy.enmeny_1_Hp <= 0) {
+                UnSpawn(ctx, enemy);
+            }
+        }
     }
 
     public static void Move(GameContext ctx, RoleEntity role, Vector2 dir, float dt) {
@@ -87,14 +108,14 @@ public static class RoleDomain {
         for (int i = 0; i < len; i++) {
             RoleEntity enemey = array[i];
             if (enemey.isRole) {
-            }else{
+            } else {
                 continue;
             }
 
 
-            float dis =Vector2.SqrMagnitude(player.transform.position - enemey.transform.position);
-            if(Input.GetKeyDown(KeyCode.Space)){
-                Debug.Log(player.id+"距离" + dis);
+            float dis = Vector2.SqrMagnitude(player.transform.position - enemey.transform.position);
+            if (Input.GetKeyDown(KeyCode.Space)) {
+                Debug.Log(player.id + "距离" + dis);
             }
 
             if (dis < 60) {

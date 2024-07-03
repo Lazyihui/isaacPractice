@@ -11,7 +11,7 @@ public static class BulletDomain {
         BulletEntity bullet = go.GetComponent<BulletEntity>();
         bullet.Ctor();
         bullet.SetPos(pos);
-        // bullet.SetSprite(ctx.assetsContext.GetSprite("Bullet_Sprite"));
+        bullet.SetSprite(tm.sprite);
         bullet.SetRB(RigidbodyType2D.Kinematic);
         bullet.dir_player = 0;
         bullet.moveDistance = tm.moveDistance;
@@ -28,6 +28,38 @@ public static class BulletDomain {
         ctx.gameEntity.bulletRecordID++;
         ctx.bulletRespository.Add(bullet);
         return bullet;
+    }
+    // enemny_1 bullet  的函数
+    public static void Enemy1_BulletTouchPlayer(GameContext ctx, BulletEntity bullet) {
+        RoleEntity player = ctx.roleRespository.Find(x => x.isRole);
+        if (player == null) {
+            return;
+        }
+        Vector2 playerPos = player.transform.position;
+        Vector2 bulletPos = bullet.transform.position;
+        float distance = Vector2.SqrMagnitude(playerPos - bulletPos);
+        if (distance < 0.5f) {
+            ctx.gameEntity.hp -= 1;
+            BulletDomain.UnSpawn(ctx, bullet);
+        }
+
+    }
+    // player bullet 的函数
+    public static void player_BulletTouchEnemy(GameContext ctx, BulletEntity bullet) {
+        RoleEntity enemy = ctx.roleRespository.Find(x => x.isEnemy_1);
+        if (enemy == null) {
+            return;
+        }
+
+        Vector2 enemyPos = enemy.transform.position;
+        Vector2 bulletPos = bullet.transform.position;
+        float distance = Vector2.SqrMagnitude(enemyPos - bulletPos);
+        if (distance < 0.5f) {
+            enemy.enmeny_1_Hp -= 1;
+            Debug.Log("enemy.enmeny_1_Hp" + enemy.enmeny_1_Hp);
+            BulletDomain.UnSpawn(ctx, bullet);
+        }
+
     }
 
     public static void Move(GameContext ctx, BulletEntity bullet, float dt) {
@@ -53,7 +85,7 @@ public static class BulletDomain {
     // enemy_1 bullet 的移动 
     public static void Enemy_1_Move(GameContext ctx, BulletEntity bullet, RoleEntity player, float dt) {
         // 向player移动
-        Vector2 dir =bullet.dir_Enmeny1;
+        Vector2 dir = bullet.dir_Enmeny1;
         dir.Normalize();
         bullet.Move(dir, dt);
 

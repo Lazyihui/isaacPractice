@@ -37,7 +37,7 @@ public class RoleEntity : MonoBehaviour {
 
     // Enmey1素材信息
     
-
+    public int enmeny_1_Hp;
     
 
     public void Ctor() {

@@ -16,7 +16,7 @@ MonoBehaviour:
   typeID: 0
   isRole: 1
   moveSpeed: 5
-  interval: 5
-  intervalTimer: 5
+  interval: 10
+  intervalTimer: 10
   animator: {fileID: 9100000, guid: 18efb818b1d66404ca0f13e7d3a719c4, type: 2}
   sprite: {fileID: 5986909737524308568, guid: 711533ab388b29d4c834314226cec5ec, type: 3}

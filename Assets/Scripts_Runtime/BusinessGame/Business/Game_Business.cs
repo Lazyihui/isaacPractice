@@ -164,8 +164,10 @@ public static class Game_Business {
 
                 RoleDomain.Move(ctx, role, ctx.moduleInput.moveAxis, dt);
                 RoleDomain.ToSpawnBullet(ctx, role, dt);
+                RoleDomain.Player_Die(ctx, role);
             } else if (role.isEnemy_1 && role.typeID == RoleConst.ENEMY_1) {
                 RoleDomain.EnemyToAttack(ctx, role, dt);
+                RoleDomain.Enemy_1_Die(ctx, role);
             }
             RoleFSMConteoller.Tick(ctx, role, dt);
 
@@ -182,9 +184,11 @@ public static class Game_Business {
                 BulletDomain.Move(ctx, bullet, dt);
                 BulletDomain.BeyondBoundaryToUnSpawn(ctx, bullet);
                 BulletDomain.MoveDistanceToUnSpawn(ctx, bullet, dt);
+                BulletDomain.player_BulletTouchEnemy(ctx, bullet);
             } else if (bullet.isEnemyBullet) {
                 BulletDomain.BeyondBoundaryToUnSpawn(ctx, bullet);
                 BulletDomain.Enemy_1_Move(ctx, bullet, roles[0], dt);
+                BulletDomain.Enemy1_BulletTouchPlayer(ctx, bullet);
 
             }
 

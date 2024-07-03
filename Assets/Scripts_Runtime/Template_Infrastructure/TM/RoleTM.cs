@@ -5,11 +5,12 @@ using UnityEngine;
 
 public class RoleTM : ScriptableObject {
 
-    [Header("bool")]
+    [Header("Enemy_1")]
+
     
     public bool isEnemy_1;
 
-
+    public int enmeny_1_Hp;
     [Header("Role")]
 
     public int typeID;
