@@ -32,6 +32,9 @@ public class GameEntity {
 
     public int keyCount;
 
+    public int currentEnemyCount;
+
+    public bool isSpawnChest;
 
     public GameEntity() {
 
@@ -45,6 +48,7 @@ public class GameEntity {
         propRecordID = 0;
         nextLevelID = 0;
         figureCount = 3;
+        currentEnemyCount = 1;
         isEnterLevel = false;
     }
 

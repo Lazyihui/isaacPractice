@@ -54,6 +54,7 @@ public static class RoleDomain {
         if (enemy.isEnemy_1) {
             if (enemy.enmeny_1_Hp <= 0) {
                 UnSpawn(ctx, enemy);
+                ctx.gameEntity.currentEnemyCount--;
             }
         }
     }

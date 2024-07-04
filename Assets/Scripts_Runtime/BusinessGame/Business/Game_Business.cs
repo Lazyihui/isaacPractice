@@ -110,6 +110,7 @@ public static class Game_Business {
         RoleDomain.Spawn(ctx, new Vector2(10.5f, -5), RoleConst.ENEMY_1);
         RoleDomain.Spawn(ctx, new Vector2(10.5f, 6), RoleConst.ENEMY_1);
 
+        ctx.gameEntity.currentEnemyCount = 4;
     }
 
 
@@ -212,6 +213,16 @@ public static class Game_Business {
             // PropDomain.SetRigidbody(ctx, prop);
         }
 
+        if (ctx.gameEntity.currentEnemyCount == 0) {
+            ctx.gameEntity.isSpawnChest = true;
+            ctx.gameEntity.currentEnemyCount = 1;
+        }
+
+
+        if (ctx.gameEntity.isSpawnChest) {
+            PropDomain.Spawn(ctx, new Vector2(3, 1), PropConst.CHEST, 0);
+            ctx.gameEntity.isSpawnChest = false;
+        }
 
 
         // 清除全部
