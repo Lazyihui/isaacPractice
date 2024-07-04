@@ -56,7 +56,7 @@ public static class Game_Business {
 
     }
 
-    public static void Next_Level_hasEnemy(GameContext ctx) {
+    public static void Next_Level_hasEnemy_1(GameContext ctx) {
         Vector2 pos = Vector2.zero;
         if (ctx.gameEntity.nextLevelID == 1) {
             pos = new Vector2(0, -5.5f);
@@ -113,6 +113,24 @@ public static class Game_Business {
         ctx.gameEntity.currentEnemyCount = 4;
     }
 
+    public static void Next_Level_hasEnemy_2(GameContext ctx) {
+        Vector2 pos = Vector2.zero;
+        if (ctx.gameEntity.nextLevelID == 1) {
+            pos = new Vector2(0, -5.5f);
+        } else if (ctx.gameEntity.nextLevelID == 2) {
+            pos = new Vector2(-1, 7.5f);
+        } else if (ctx.gameEntity.nextLevelID == 3) {
+            pos = new Vector2(11.5f, 0.5f);
+        } else if (ctx.gameEntity.nextLevelID == 4) {
+            pos = new Vector2(-11.5f, 1);
+        }
+
+        ctx.gameEntity.Init();
+        RoleDomain.Spawn(ctx, pos, RoleConst.PLAYER);
+        MapDomain.Spawn(ctx, 3);
+
+        
+    }
 
 
     public static void Load_Game(GameContext ctx) {
@@ -233,7 +251,7 @@ public static class Game_Business {
             PropDomain.CloseAll(ctx);
             MapDomain.CloseAll(ctx);
             if (ctx.gameEntity.nextLevelID == 2) {
-                Next_Level_hasEnemy(ctx);
+                Next_Level_hasEnemy_1(ctx);
             } else {
                 Next_Level(ctx);
             }
