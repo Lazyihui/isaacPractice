@@ -21,3 +21,4 @@ MonoBehaviour:
   intervalTimer: 20
   animator: {fileID: 9100000, guid: 74f24b197de3a9942b669fc9cd04cbda, type: 2}
   sprite: {fileID: -2642187438677812803, guid: e0e73ae7a22278648abb39fa9dde7899, type: 3}
+  color: {r: 1, g: 1, b: 1, a: 0}

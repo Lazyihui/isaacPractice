@@ -30,6 +30,8 @@ public class RoleTM : ScriptableObject {
 
     public Sprite sprite;
 
+    public Color color;
+
 
 
 }

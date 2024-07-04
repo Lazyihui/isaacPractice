@@ -51,7 +51,6 @@ public static class Game_Business {
         MapDomain.Spawn(ctx, 2);
         PropDomain.Spawn(ctx, new Vector2(3, 1), PropConst.CHEST, 0);
 
-        // PropDomain.Spawn(ctx, new Vector2(1, 0), PropConst.CHEST,0);
         PropDomain.ToSpawnIsTriggerProp(ctx);
 
     }
@@ -128,8 +127,9 @@ public static class Game_Business {
         ctx.gameEntity.Init();
         RoleDomain.Spawn(ctx, pos, RoleConst.PLAYER);
         MapDomain.Spawn(ctx, 3);
-
+        PropDomain.ToSpawnIsTriggerProp(ctx);
         
+
     }
 
 
@@ -252,6 +252,8 @@ public static class Game_Business {
             MapDomain.CloseAll(ctx);
             if (ctx.gameEntity.nextLevelID == 2) {
                 Next_Level_hasEnemy_1(ctx);
+            } else if (ctx.gameEntity.nextLevelID == 1) {
+                Next_Level_hasEnemy_2(ctx);
             } else {
                 Next_Level(ctx);
             }

@@ -20,7 +20,7 @@ public static class RoleDomain {
 
         role.Ctor();
         role.SetPos(pos);
-        role.SetSprite(tm.sprite);
+        role.SetSprite(tm.sprite, tm.color);
 
         role.moveSpeed = tm.moveSpeed;
         role.interval = tm.interval;

@@ -44,6 +44,7 @@ public class RoleEntity : MonoBehaviour {
 
     }
 
+
     public void Move(Vector2 dir, float dt) {
 
         var velo = rb.velocity;
@@ -61,8 +62,9 @@ public class RoleEntity : MonoBehaviour {
         transform.position = pos;
     }
 
-    public void SetSprite(Sprite sprite) {
+    public void SetSprite(Sprite sprite, Color color) {
         sprRd.sprite = sprite;
+        sprRd.color  = color;
     }
     public void TearDown() {
         GameObject.Destroy(this.gameObject);
