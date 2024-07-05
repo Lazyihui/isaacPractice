@@ -62,10 +62,22 @@ public class RoleEntity : MonoBehaviour {
         transform.position = pos;
     }
 
-    public void SetSprite(Sprite sprite, Color color) {
+    public void SetSprite(Sprite sprite) {
         sprRd.sprite = sprite;
-        sprRd.color  = color;
+        // sprRd.color  = color;
     }
+
+    public void SetColor() {
+        if(RoleConst.PLAYER == typeID) {
+            sprRd.color = Color.white;
+        }else if(RoleConst.ENEMY_1 == typeID) {
+            sprRd.color = Color.white;
+        }else if(RoleConst.ENEMY_2 == typeID) {
+            sprRd.color = Color.red;
+        }
+
+    }
+
     public void TearDown() {
         GameObject.Destroy(this.gameObject);
     }

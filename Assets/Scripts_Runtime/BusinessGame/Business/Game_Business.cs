@@ -18,8 +18,7 @@ public static class Game_Business {
 
         PropDomain.Spawn(ctx, new Vector2(-3, 1), 1, 0);
 
-        // tem.isObstacle = true;
-        // 后面用TM写
+        RoleDomain.Spawn(ctx, new Vector2(6, 5), RoleConst.ENEMY_2);
 
 
         // 打开panel
@@ -128,7 +127,7 @@ public static class Game_Business {
         RoleDomain.Spawn(ctx, pos, RoleConst.PLAYER);
         MapDomain.Spawn(ctx, 3);
         PropDomain.ToSpawnIsTriggerProp(ctx);
-        
+
 
     }
 
