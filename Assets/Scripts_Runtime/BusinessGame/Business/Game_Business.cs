@@ -18,8 +18,6 @@ public static class Game_Business {
 
         PropDomain.Spawn(ctx, new Vector2(-3, 1), 1, 0);
 
-        RoleDomain.Spawn(ctx, new Vector2(6, 5), RoleConst.ENEMY_2);
-
 
         // 打开panel
         UIApp.Panel_Heart_Open(ctx.uiContext, 3);
@@ -35,6 +33,7 @@ public static class Game_Business {
     }
 
     public static void Next_Level(GameContext ctx) {
+        // 3 4 的关卡
         Vector2 pos = Vector2.zero;
         if (ctx.gameEntity.nextLevelID == 1) {
             pos = new Vector2(0, -5.5f);
@@ -55,6 +54,7 @@ public static class Game_Business {
     }
 
     public static void Next_Level_hasEnemy_1(GameContext ctx) {
+        // 2 的关卡
         Vector2 pos = Vector2.zero;
         if (ctx.gameEntity.nextLevelID == 1) {
             pos = new Vector2(0, -5.5f);
@@ -112,6 +112,7 @@ public static class Game_Business {
     }
 
     public static void Next_Level_hasEnemy_2(GameContext ctx) {
+        // 1 的关卡
         Vector2 pos = Vector2.zero;
         if (ctx.gameEntity.nextLevelID == 1) {
             pos = new Vector2(0, -5.5f);
@@ -127,6 +128,10 @@ public static class Game_Business {
         RoleDomain.Spawn(ctx, pos, RoleConst.PLAYER);
         MapDomain.Spawn(ctx, 3);
         PropDomain.ToSpawnIsTriggerProp(ctx);
+        RoleDomain.Spawn(ctx, new Vector2(3, 3), RoleConst.ENEMY_2);
+        RoleDomain.Spawn(ctx, new Vector2(1, 2), RoleConst.ENEMY_2);
+        RoleDomain.Spawn(ctx, new Vector2(4, 3), RoleConst.ENEMY_2);
+        RoleDomain.Spawn(ctx, new Vector2(5, 1), RoleConst.ENEMY_2);
 
 
     }
@@ -183,10 +188,13 @@ public static class Game_Business {
                 RoleDomain.Move(ctx, role, ctx.moduleInput.moveAxis, dt);
                 RoleDomain.ToSpawnBullet(ctx, role, dt);
                 RoleDomain.Player_Die(ctx, role);
-            } else if (role.isEnemy_1 && role.typeID == RoleConst.ENEMY_1) {
+            } else if (role.typeID == RoleConst.ENEMY_1) {
                 RoleDomain.EnemyToAttack(ctx, role, dt);
                 RoleDomain.Enemy_1_Die(ctx, role);
+            } else if (role.typeID == RoleConst.ENEMY_2) {
+            
             }
+
             RoleFSMConteoller.Tick(ctx, role, dt);
 
 

@@ -20,7 +20,6 @@ public class RoleEntity : MonoBehaviour {
     // 二选一的
     public bool isRole;
 
-    public bool isEnemy_1;
 
     // 状态机
     public RoleFSMStatus status;
@@ -36,9 +35,9 @@ public class RoleEntity : MonoBehaviour {
     public float intervalTimer;
 
     // Enmey1素材信息
-    
+
     public int enmeny_1_Hp;
-    
+
 
     public void Ctor() {
 
@@ -68,11 +67,11 @@ public class RoleEntity : MonoBehaviour {
     }
 
     public void SetColor() {
-        if(RoleConst.PLAYER == typeID) {
+        if (RoleConst.PLAYER == typeID) {
             sprRd.color = Color.white;
-        }else if(RoleConst.ENEMY_1 == typeID) {
+        } else if (RoleConst.ENEMY_1 == typeID) {
             sprRd.color = Color.white;
-        }else if(RoleConst.ENEMY_2 == typeID) {
+        } else if (RoleConst.ENEMY_2 == typeID) {
             sprRd.color = Color.red;
         }
 

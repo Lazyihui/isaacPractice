@@ -46,7 +46,7 @@ public static class BulletDomain {
     }
     // player bullet 的函数
     public static void player_BulletTouchEnemy(GameContext ctx, BulletEntity bullet) {
-        RoleEntity enemy = ctx.roleRespository.Find(x => x.isEnemy_1);
+        RoleEntity enemy = ctx.roleRespository.Find(x => x.typeID == RoleConst.ENEMY_1);
         if (enemy == null) {
             return;
         }

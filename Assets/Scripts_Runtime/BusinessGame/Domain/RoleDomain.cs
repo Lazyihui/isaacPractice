@@ -29,7 +29,6 @@ public static class RoleDomain {
         role.isRole = tm.isRole;
         role.animatior.runtimeAnimatorController = tm.animator;
 
-        role.isEnemy_1 = tm.isEnemy_1;
         role.enmeny_1_Hp = tm.enmeny_1_Hp;
 
 
@@ -50,20 +49,17 @@ public static class RoleDomain {
     }
 
     // enemy 的死亡
-    public static void Enemy_1_Die(GameContext ctx, RoleEntity enemy) { 
-        // 外面这个判断好像是多余的
-        if (enemy.isEnemy_1) {
+    public static void Enemy_1_Die(GameContext ctx, RoleEntity enemy) {
             if (enemy.enmeny_1_Hp <= 0) {
                 UnSpawn(ctx, enemy);
                 ctx.gameEntity.currentEnemyCount--;
             }
-        }
     }
 
     public static void Move(GameContext ctx, RoleEntity role, Vector2 dir, float dt) {
         role.Move(dir, dt);
     }
-
+    // Player 的发射子弹
     public static void ToSpawnBullet(GameContext ctx, RoleEntity role, float dt) {
 
         role.intervalTimer -= dt;
