@@ -19,6 +19,7 @@ public static class RoleDomain {
         role.typeID = typeID;
 
         role.Ctor();
+
         role.SetPos(pos);
         role.SetSprite(tm.sprite);
         role.SetColor();
@@ -40,22 +41,20 @@ public static class RoleDomain {
     }
     // player 死亡的函数//相当于游戏结束
     public static void Player_Die(GameContext ctx, RoleEntity role) {
-            if (ctx.gameEntity.hp <= 0) {
-                UnSpawn(ctx, role);
+        if (ctx.gameEntity.hp <= 0) {
+            UnSpawn(ctx, role);
         }
     }
 
     // enemy 的死亡
     public static void Enemy_Die(GameContext ctx, RoleEntity enemy) {
-            if (enemy.enmeny_1_Hp <= 0) {
-                if(enemy.typeID == RoleConst.ENEMY_2) {
-                    RoleDomain.Spawn(ctx, enemy.transform.position, RoleConst.ENEMY_3);
-                }
-    
-                UnSpawn(ctx, enemy);
-    
-                ctx.gameEntity.currentEnemyCount--;
+        if (enemy.enmeny_1_Hp <= 0) {
+            if (enemy.typeID == RoleConst.ENEMY_2) {
+                RoleDomain.Spawn(ctx, enemy.transform.position, RoleConst.ENEMY_3);
             }
+            UnSpawn(ctx, enemy);
+            ctx.gameEntity.currentEnemyCount--;
+        }
     }
 
 
@@ -64,64 +63,80 @@ public static class RoleDomain {
         role.Move(dir, dt);
     }
 
-    public static void moveToPlayer(GameContext ctx, RoleEntity enemy,  float dt) {
+    public static void moveToPlayer(GameContext ctx, RoleEntity enemy, float dt) {
         RoleEntity player = ctx.roleRespository.Find(player => player.typeID == RoleConst.PLAYER);
+        if (player == null) {
+            return;
+        }
         Vector2 dir = player.transform.position - enemy.transform.position;
-        
+
         dir.Normalize();
         enemy.Move(dir, dt);
     }
+
+    //  enemy碰到player player掉血 并且进入无敌状态 enemy位置回退一点点
+    public static void EnemyTouchAttack(GameContext ctx, RoleEntity enemy, float dt) {
+        RoleEntity player = ctx.roleRespository.Find(player => player.typeID == RoleConst.PLAYER);
+        if (player == null) {
+            return;
+        }
+        float distance = Vector2.SqrMagnitude(player.transform.position - enemy.transform.position);
+        if (distance < 1.0f && player.isInvincible) {
+            player.isInvincible = true;
+            Debug.Log("player掉血");
+            ctx.gameEntity.hp -= 1;
+            Vector3 dir = player.transform.position - enemy.transform.position;
+            dir.Normalize();
+            enemy.transform.position = enemy.transform.position - dir;
+            player.invincibleTimer -= dt;
+            if (player.invincibleTimer <= 0) {
+                player.isInvincible = false;
+                player.invincibleTimer = 1.5f;
+            }
+        }
+
+    }
+
+
     // Player 的发射子弹
     public static void ToSpawnBullet(GameContext ctx, RoleEntity role, float dt) {
-
         role.intervalTimer -= dt;
-
         if (role.intervalTimer <= 0) {
 
             if (Input.GetKeyDown(KeyCode.UpArrow)) {
                 BulletEntity bullet = BulletDomain.Spawn(ctx, role.transform.position, 0);
                 bullet.dir_player = 1;
                 role.intervalTimer = role.interval;
-
             }
-
             if (Input.GetKeyDown(KeyCode.DownArrow)) {
                 BulletEntity bullet = BulletDomain.Spawn(ctx, role.transform.position, 0);
                 bullet.dir_player = 0;
                 role.intervalTimer = role.interval;
-
             }
-
             if (Input.GetKeyDown(KeyCode.LeftArrow)) {
                 BulletEntity bullet = BulletDomain.Spawn(ctx, role.transform.position, 0);
                 bullet.dir_player = 2;
                 role.intervalTimer = role.interval;
-
             }
-
             if (Input.GetKeyDown(KeyCode.RightArrow)) {
                 BulletEntity bullet = BulletDomain.Spawn(ctx, role.transform.position, 0);
                 bullet.dir_player = 3;
                 role.intervalTimer = role.interval;
-
             }
-
-
         }
 
     }
 
     // enemy 和 player 的大范围的检测 检测到enmey 就会自动攻击
     public static void EnemyToAttack(GameContext ctx, RoleEntity player, float dt) {
+        // 这里可以优化 改一下
         int len = ctx.roleRespository.TakeAll(out RoleEntity[] array);
-
         for (int i = 0; i < len; i++) {
             RoleEntity enemey = array[i];
             if (enemey.isRole) {
             } else {
                 continue;
             }
-
 
             float dis = Vector2.SqrMagnitude(player.transform.position - enemey.transform.position);
             if (Input.GetKeyDown(KeyCode.Space)) {
@@ -136,11 +151,8 @@ public static class RoleDomain {
 
                     player.intervalTimer = player.interval;
                 }
-
-
             }
         }
-
 
     }
 

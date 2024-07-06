@@ -171,9 +171,6 @@ public static class Game_Business {
     }
 
     static void LogicFix(GameContext ctx, float dt) {
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            ctx.gameEntity.hp += 1;
-        }
 
         // role 
         int roleLen = ctx.roleRespository.TakeAll(out RoleEntity[] roles);
@@ -190,9 +187,11 @@ public static class Game_Business {
                 RoleDomain.Enemy_Die(ctx, role);
             } else if (role.typeID == RoleConst.ENEMY_2) {
                 RoleDomain.moveToPlayer(ctx, role, dt);
+                RoleDomain.EnemyTouchAttack(ctx, role, dt);
                 RoleDomain.Enemy_Die(ctx, role);
             }else if (role.typeID == RoleConst.ENEMY_3) {
                 RoleDomain.moveToPlayer(ctx, role, dt);
+                RoleDomain.EnemyTouchAttack(ctx, role, dt);
                 RoleDomain.Enemy_Die(ctx, role);
             }
 

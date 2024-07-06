@@ -27,20 +27,24 @@ public class RoleEntity : MonoBehaviour {
     public bool idle_isEntering;
 
 
-
-
     // 子弹的cd
     public float interval;
 
     public float intervalTimer;
 
-    // Enmey1素材信息
+    // player 的信息
+    public bool isInvincible;
+
+    public float invincibleTimer;
+
+
 
     public int enmeny_1_Hp;
 
 
     public void Ctor() {
-
+        isInvincible = true;
+        invincibleTimer = 1.5f;
     }
 
 
