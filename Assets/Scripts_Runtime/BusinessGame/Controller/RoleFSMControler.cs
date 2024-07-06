@@ -19,7 +19,9 @@ public static class RoleFSMConteoller {
             Player_Any_State(ctx, role, dt);
         }
 
-
+        if (role.typeID == RoleConst.ENEMY_3) {
+            Enemy_Any_State(ctx, role, dt);
+        }
 
 
     }
@@ -38,13 +40,24 @@ public static class RoleFSMConteoller {
         if (face.x == 0 && face.y == 0) {
             role.Enter_Idle();
         }
+
+
     }
 
     static void Enemy_Any_State(GameContext ctx, RoleEntity role, float dt) {
+        RoleEntity player = ctx.roleRespository.Find(player => player.typeID == RoleConst.PLAYER);
+
+        Vector2 dir = player.transform.position - role.transform.position;
+        dir.Normalize();
+        if (dir.x > 0) {
+            role.transform.localScale = new Vector3(1, 1, 1);
+        } else if (dir.x < 0) {
+            role.transform.localScale = new Vector3(-1, 1, 1);
+        }
 
     }
 
-    
+
 
     static void Player_Idle(GameContext ctx, RoleEntity role, float dt) {
         if (role.idle_isEntering) {
@@ -54,7 +67,7 @@ public static class RoleFSMConteoller {
     }
 
     static void Enemy_Idle(GameContext ctx, RoleEntity role, float dt) {
-        if(role.idle_isEntering){
+        if (role.idle_isEntering) {
             role.idle_isEntering = false;
             role.animatior.Play("Eneny1_Idle");
         }

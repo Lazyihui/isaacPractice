@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12e330e2d79519a409e3067edc0d3ff8, type: 3}
   m_Name: TM_3Enemy
   m_EditorClassIdentifier: 
-  typeID: 4000
-  moveSpeed: 5
+  typeID: 3000
+  moveSpeed: 4
   isEnemy_1: 1
   enmeny_1_Hp: 3
   isRole: 0

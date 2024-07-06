@@ -129,7 +129,7 @@ public static class Game_Business {
         MapDomain.Spawn(ctx, 3);
         PropDomain.ToSpawnIsTriggerProp(ctx);
         RoleDomain.Spawn(ctx, new Vector2(3, 3), RoleConst.ENEMY_2);
-        ctx.gameEntity.currentEnemyCount = 1;
+        ctx.gameEntity.currentEnemyCount = 2;
 
     }
 
@@ -191,6 +191,9 @@ public static class Game_Business {
             } else if (role.typeID == RoleConst.ENEMY_2) {
                 RoleDomain.moveToPlayer(ctx, role, dt);
                 RoleDomain.Enemy_Die(ctx, role);
+            }else if (role.typeID == RoleConst.ENEMY_3) {
+                RoleDomain.moveToPlayer(ctx, role, dt);
+                RoleDomain.Enemy_Die(ctx, role);
             }
 
             RoleFSMConteoller.Tick(ctx, role, dt);
@@ -219,10 +222,6 @@ public static class Game_Business {
 
 
         }
-
-
-
-
 
 
         int propLen = ctx.propRespository.TakeAll(out PropEntity[] props);

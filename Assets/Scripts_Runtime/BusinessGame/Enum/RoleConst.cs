@@ -9,6 +9,8 @@ public static class RoleConst {
 
     public const int ENEMY_2 = 200;
 
+    public const int ENEMY_3 = 3000;
+
 }
 
 

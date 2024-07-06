@@ -49,7 +49,7 @@ public static class RoleDomain {
     public static void Enemy_Die(GameContext ctx, RoleEntity enemy) {
             if (enemy.enmeny_1_Hp <= 0) {
                 if(enemy.typeID == RoleConst.ENEMY_2) {
-                    // RoleDomain.Spawn(ctx, enemy.transform.position, RoleConst.ENEMY_1);
+                    RoleDomain.Spawn(ctx, enemy.transform.position, RoleConst.ENEMY_3);
                 }
     
                 UnSpawn(ctx, enemy);
@@ -67,6 +67,7 @@ public static class RoleDomain {
     public static void moveToPlayer(GameContext ctx, RoleEntity enemy,  float dt) {
         RoleEntity player = ctx.roleRespository.Find(player => player.typeID == RoleConst.PLAYER);
         Vector2 dir = player.transform.position - enemy.transform.position;
+        
         dir.Normalize();
         enemy.Move(dir, dt);
     }
