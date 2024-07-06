@@ -40,24 +40,35 @@ public static class RoleDomain {
     }
     // player 死亡的函数//相当于游戏结束
     public static void Player_Die(GameContext ctx, RoleEntity role) {
-        // 外面这个判断好像是多余的
-        if (role.isRole) {
             if (ctx.gameEntity.hp <= 0) {
                 UnSpawn(ctx, role);
-            }
         }
     }
 
     // enemy 的死亡
-    public static void Enemy_1_Die(GameContext ctx, RoleEntity enemy) {
+    public static void Enemy_Die(GameContext ctx, RoleEntity enemy) {
             if (enemy.enmeny_1_Hp <= 0) {
+                if(enemy.typeID == RoleConst.ENEMY_2) {
+                    // RoleDomain.Spawn(ctx, enemy.transform.position, RoleConst.ENEMY_1);
+                }
+    
                 UnSpawn(ctx, enemy);
+    
                 ctx.gameEntity.currentEnemyCount--;
             }
     }
 
+
+
     public static void Move(GameContext ctx, RoleEntity role, Vector2 dir, float dt) {
         role.Move(dir, dt);
+    }
+
+    public static void moveToPlayer(GameContext ctx, RoleEntity enemy,  float dt) {
+        RoleEntity player = ctx.roleRespository.Find(player => player.typeID == RoleConst.PLAYER);
+        Vector2 dir = player.transform.position - enemy.transform.position;
+        dir.Normalize();
+        enemy.Move(dir, dt);
     }
     // Player 的发射子弹
     public static void ToSpawnBullet(GameContext ctx, RoleEntity role, float dt) {

@@ -56,7 +56,6 @@ public static class BulletDomain {
         float distance = Vector2.SqrMagnitude(enemyPos - bulletPos);
         if (distance < 0.5f) {
             enemy.enmeny_1_Hp -= 1;
-            Debug.Log("enemy.enmeny_1_Hp" + enemy.enmeny_1_Hp);
             BulletDomain.UnSpawn(ctx, bullet);
         }
 

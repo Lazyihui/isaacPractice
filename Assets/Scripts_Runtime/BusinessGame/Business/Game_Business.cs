@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-
+using GameFunctions.PathfindingInternal;
 
 public static class Game_Business {
     public static void New_Game(GameContext ctx) {
@@ -129,10 +129,7 @@ public static class Game_Business {
         MapDomain.Spawn(ctx, 3);
         PropDomain.ToSpawnIsTriggerProp(ctx);
         RoleDomain.Spawn(ctx, new Vector2(3, 3), RoleConst.ENEMY_2);
-        RoleDomain.Spawn(ctx, new Vector2(1, 2), RoleConst.ENEMY_2);
-        RoleDomain.Spawn(ctx, new Vector2(4, 3), RoleConst.ENEMY_2);
-        RoleDomain.Spawn(ctx, new Vector2(5, 1), RoleConst.ENEMY_2);
-
+        ctx.gameEntity.currentEnemyCount = 1;
 
     }
 
@@ -190,9 +187,10 @@ public static class Game_Business {
                 RoleDomain.Player_Die(ctx, role);
             } else if (role.typeID == RoleConst.ENEMY_1) {
                 RoleDomain.EnemyToAttack(ctx, role, dt);
-                RoleDomain.Enemy_1_Die(ctx, role);
+                RoleDomain.Enemy_Die(ctx, role);
             } else if (role.typeID == RoleConst.ENEMY_2) {
-            
+                RoleDomain.moveToPlayer(ctx, role, dt);
+                RoleDomain.Enemy_Die(ctx, role);
             }
 
             RoleFSMConteoller.Tick(ctx, role, dt);
