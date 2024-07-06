@@ -74,7 +74,7 @@ public static class UIApp {
 
     public static void Panel_FigureElement_SetText(UIContext ctx, Panel_FigureElement ele, int typeID, int txt) {
         // 2 是gold 3 是Bomb 4 是钥匙
-            ele.SetText(txt);
+        ele.SetText(txt);
     }
     public static void Panel_Figure_Close(UIContext ctx) {
         Panel_Figure panel = ctx.panel_Figure;
@@ -84,4 +84,31 @@ public static class UIApp {
         panel.TearDown();
         ctx.panel_Figure = null;
     }
+
+    // panel_BossedHeart
+    public static void Panel_BossedHeart_Open(UIContext ctx, float hp, float hpMax) {
+        Panel_BossedHeart panel = ctx.panel_BossedHeart;
+        if (panel == null) {
+            bool has = ctx.assetsContext.TryGetPanel("Panel_BossedHeart", out GameObject prefab);
+            if (!has) {
+                Debug.LogError("Panel_BossedHeart not found");
+                return;
+            }
+            GameObject go = GameObject.Instantiate(prefab, ctx.canvas.transform);
+            panel = go.GetComponent<Panel_BossedHeart>();
+            panel.Ctor();
+            ctx.panel_BossedHeart = panel;
+        }
+        panel.Show();
+        panel.SetHp(hp, hpMax);
+    }
+
+    public static void Panel_BossedHeart_Update(UIContext ctx, float hp, float hpMax) {
+        Panel_BossedHeart panel = ctx.panel_BossedHeart;
+        if (panel == null) {
+            return;
+        }
+        panel.SetHp(hp, hpMax);
+    }
+    
 }

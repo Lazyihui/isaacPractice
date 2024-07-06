@@ -29,6 +29,7 @@ public static class Game_Business {
             UIApp.Panel_FigureElement_Add(ctx.uiContext, i);
         }
 
+        UIApp.Panel_BossedHeart_Open(ctx.uiContext, 2,3);
 
     }
 

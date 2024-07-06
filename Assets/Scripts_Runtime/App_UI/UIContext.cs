@@ -16,6 +16,7 @@ public class UIContext {
 
     public Panel_Figure panel_Figure;
 
+    public Panel_BossedHeart panel_BossedHeart;
     // repository
     public FigureEleRespository figureEleRespository;
     public int figureEleRecordID;
