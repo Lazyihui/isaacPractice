@@ -29,7 +29,6 @@ public static class Game_Business {
             UIApp.Panel_FigureElement_Add(ctx.uiContext, i);
         }
 
-        UIApp.Panel_BossedHeart_Open(ctx.uiContext, 2,3);
 
     }
 
@@ -134,6 +133,26 @@ public static class Game_Business {
 
     }
 
+    public static void Next_Level_Boss(GameContext ctx) {
+        Vector2 pos = Vector2.zero;
+        if (ctx.gameEntity.nextLevelID == 1) {
+            pos = new Vector2(0, -5.5f);
+        } else if (ctx.gameEntity.nextLevelID == 2) {
+            pos = new Vector2(-1, 7.5f);
+        } else if (ctx.gameEntity.nextLevelID == 3) {
+            pos = new Vector2(11.5f, 0.5f);
+        } else if (ctx.gameEntity.nextLevelID == 4) {
+            pos = new Vector2(-11.5f, 1);
+        }
+        ctx.gameEntity.Init();
+        RoleDomain.Spawn(ctx, pos, RoleConst.PLAYER);
+        MapDomain.Spawn(ctx, 3);
+        PropDomain.ToSpawnIsTriggerProp(ctx);
+        RoleEntity boss = RoleDomain.Spawn(ctx, new Vector2(3, 3), RoleConst.ENEMY_4);
+        UIApp.Panel_BossedHeart_Open(ctx.uiContext, boss.enemy_Hp, boss.enemy_Maxhp);
+
+    }
+
 
     public static void Load_Game(GameContext ctx) {
 
@@ -190,8 +209,11 @@ public static class Game_Business {
                 RoleDomain.moveToPlayer(ctx, role, dt);
                 RoleDomain.EnemyTouchAttack(ctx, role, dt);
                 RoleDomain.Enemy_Die(ctx, role);
-            }else if (role.typeID == RoleConst.ENEMY_3) {
+            } else if (role.typeID == RoleConst.ENEMY_3) {
                 RoleDomain.moveToPlayer(ctx, role, dt);
+                RoleDomain.EnemyTouchAttack(ctx, role, dt);
+                RoleDomain.Enemy_Die(ctx, role);
+            } else if (role.typeID == RoleConst.ENEMY_4) {
                 RoleDomain.EnemyTouchAttack(ctx, role, dt);
                 RoleDomain.Enemy_Die(ctx, role);
             }
@@ -216,7 +238,6 @@ public static class Game_Business {
                 BulletDomain.BeyondBoundaryToUnSpawn(ctx, bullet);
                 BulletDomain.Enemy_1_Move(ctx, bullet, roles[0], dt);
                 BulletDomain.Enemy1_BulletTouchPlayer(ctx, bullet);
-
             }
 
 
@@ -258,6 +279,8 @@ public static class Game_Business {
                 Next_Level_hasEnemy_1(ctx);
             } else if (ctx.gameEntity.nextLevelID == 1) {
                 Next_Level_hasEnemy_2(ctx);
+            } else if (ctx.gameEntity.nextLevelID == 3) {
+                Next_Level_Boss(ctx);
             } else {
                 Next_Level(ctx);
             }
@@ -268,6 +291,11 @@ public static class Game_Business {
 
     static void LateTick(GameContext ctx, float dt) {
         UIApp.Panel_Heart_Unpdate(ctx.uiContext, ctx.gameEntity.hp);
+
+        RoleEntity boss = ctx.roleRespository.Find(x => x.typeID == RoleConst.ENEMY_4);
+        if (boss != null) {
+            UIApp.Panel_BossedHeart_Update(ctx.uiContext, boss.enemy_Hp, boss.enemy_Maxhp);
+        }
 
         //  panel giureElement
         int figureEleLen = ctx.uiContext.figureEleRespository.TakeAll(out Panel_FigureElement[] figureEles);

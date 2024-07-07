@@ -12,7 +12,9 @@ public class RoleTM : ScriptableObject {
     
     public bool isEnemy_1;
 
-    public int enmeny_1_Hp;
+    public float enmeny_1_Hp;
+
+    public  float enemy_Maxhp;
     [Header("Role")]
 
 

@@ -30,7 +30,8 @@ public static class RoleDomain {
         role.isRole = tm.isRole;
         role.animatior.runtimeAnimatorController = tm.animator;
 
-        role.enmeny_1_Hp = tm.enmeny_1_Hp;
+        role.enemy_Hp = tm.enmeny_1_Hp;
+        role.enemy_Maxhp = tm.enemy_Maxhp;
 
 
 
@@ -48,7 +49,7 @@ public static class RoleDomain {
 
     // enemy 的死亡
     public static void Enemy_Die(GameContext ctx, RoleEntity enemy) {
-        if (enemy.enmeny_1_Hp <= 0) {
+        if (enemy.enemy_Hp <= 0) {
             if (enemy.typeID == RoleConst.ENEMY_2) {
                 RoleDomain.Spawn(ctx, enemy.transform.position, RoleConst.ENEMY_3);
             }

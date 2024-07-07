@@ -46,7 +46,7 @@ public static class BulletDomain {
     }
     // player bullet 的函数
     public static void player_BulletTouchEnemy(GameContext ctx, BulletEntity bullet) {
-        RoleEntity enemy = ctx.roleRespository.Find(x => x.typeID == RoleConst.ENEMY_1|| x.typeID == RoleConst.ENEMY_2|| x.typeID == RoleConst.ENEMY_3);
+        RoleEntity enemy = ctx.roleRespository.Find(x => x.typeID != RoleConst.PLAYER);
         if (enemy == null) {
             return;
         }
@@ -57,7 +57,7 @@ public static class BulletDomain {
         Vector2 bulletPos = bullet.transform.position;
         float distance = Vector2.SqrMagnitude(enemyPos - bulletPos);
         if (distance < 0.5f) {
-            enemy.enmeny_1_Hp -= 1;
+            enemy.enemy_Hp -= 1;
             BulletDomain.UnSpawn(ctx, bullet);
         }
 

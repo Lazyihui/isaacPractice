@@ -38,9 +38,9 @@ public class RoleEntity : MonoBehaviour {
     public float invincibleTimer;
 
 
-
-    public int enmeny_1_Hp;
-
+    // enemy 的信息
+    public float enemy_Hp;
+    public float enemy_Maxhp;
 
     public void Ctor() {
         isInvincible = true;

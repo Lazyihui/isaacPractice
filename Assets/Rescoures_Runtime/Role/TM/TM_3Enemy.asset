@@ -16,6 +16,7 @@ MonoBehaviour:
   moveSpeed: 4
   isEnemy_1: 1
   enmeny_1_Hp: 3
+  enemy_Maxhp: 3
   isRole: 0
   interval: 0
   intervalTimer: 0
