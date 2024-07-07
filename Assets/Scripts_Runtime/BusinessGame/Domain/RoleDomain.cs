@@ -59,11 +59,11 @@ public static class RoleDomain {
     }
 
 
-
+    // player wsad 控制移动
     public static void Move(GameContext ctx, RoleEntity role, Vector2 dir, float dt) {
         role.Move(dir, dt);
     }
-
+    // 向player移动
     public static void moveToPlayer(GameContext ctx, RoleEntity enemy, float dt) {
         RoleEntity player = ctx.roleRespository.Find(player => player.typeID == RoleConst.PLAYER);
         if (player == null) {
@@ -74,7 +74,7 @@ public static class RoleDomain {
         dir.Normalize();
         enemy.Move(dir, dt);
     }
-
+    // 
     //  enemy碰到player player掉血 并且进入无敌状态 enemy位置回退一点点
     public static void EnemyTouchAttack(GameContext ctx, RoleEntity enemy, float dt) {
         RoleEntity player = ctx.roleRespository.Find(player => player.typeID == RoleConst.PLAYER);
