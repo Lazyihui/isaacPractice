@@ -48,8 +48,28 @@ public static class RoleDomain {
         if (boss == null) {
             return;
         }
-        enemy.transform.RotateAround(boss.transform.position , new Vector3(0, 0, 1), 3 * dt);
+        if(enemy.isCantactPlayer){
+            moveToPlayer(ctx,enemy,dt);
+            return;
+        }
+        enemy.transform.RotateAround(boss.transform.position , new Vector3(0, 0, 1), 1 * dt);
+        if(enemy.transform.position.x < -10 || enemy.transform.position.x > 10 || enemy.transform.position.y < -10 || enemy.transform.position.y > 10){
+            Debug.Log("超出范围");
+            enemy.transform.RotateAround(boss.transform.position , new Vector3(0, 0, 1), -1 * dt);
+        }
     }
+
+    public static void isCantactPlayer(GameContext ctx, RoleEntity enemy) {
+        RoleEntity player = ctx.roleRespository.Find(player => player.typeID == RoleConst.PLAYER);
+        if (player == null) {
+            return;
+        }
+        float distance = Vector2.SqrMagnitude(player.transform.position - enemy.transform.position);
+        if (distance < 6.0f) {
+            enemy.isCantactPlayer = true;
+        }
+    }
+
     // // 第二种旋转方式
     // public static void Enemy_RotateCircle2(GameContext ctx, RoleEntity boss, float dt, Vector3 CenterPosition, Vector3 r) {
 
@@ -107,7 +127,6 @@ public static class RoleDomain {
         float distance = Vector2.SqrMagnitude(player.transform.position - enemy.transform.position);
         if (distance < 1.0f && player.isInvincible) {
             player.isInvincible = true;
-            Debug.Log("player掉血");
             ctx.gameEntity.hp -= 1;
             Vector3 dir = player.transform.position - enemy.transform.position;
             dir.Normalize();
@@ -157,7 +176,7 @@ public static class RoleDomain {
         boss.intervalTimer -= dt;
 
         if (boss.intervalTimer <= 0) {
-            Debug.Log("生成小怪");
+
             Vector3 pos = Vector3.zero;
             pos.x = Mathf.Sin(30 / 360 * Mathf.Deg2Rad) * 3;
             pos.y = Mathf.Cos(30 / 360 * Mathf.Deg2Rad) * 3;

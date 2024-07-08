@@ -41,15 +41,15 @@ public class RoleEntity : MonoBehaviour {
     // enemy 的信息
     public float enemy_Hp;
     public float enemy_Maxhp;
-    
-    public Vector3 CenterPosition;//圆心
 
-    public Vector3 radius;//半径
+    // 小怪的信息
+    public bool isCantactPlayer;
 
 
 
     public void Ctor() {
         isInvincible = true;
+        isCantactPlayer = false;
         invincibleTimer = 1.5f;
     }
 

@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: TM_5Enemy_Bossenemy
   m_EditorClassIdentifier: 
   typeID: 3000
-  moveSpeed: 4
+  moveSpeed: 3
+  interval: 0
+  intervalTimer: 0
   isEnemy_1: 1
   enmeny_1_Hp: 3
   enemy_Maxhp: 3
   isRole: 0
-  interval: 0
-  intervalTimer: 0
   animator: {fileID: 9100000, guid: efa5cd5b2ca9135468d42a3b4f6b21ec, type: 2}
   sprite: {fileID: 1191253037, guid: 80f1641d8c9882b4487e5ed69af56195, type: 3}

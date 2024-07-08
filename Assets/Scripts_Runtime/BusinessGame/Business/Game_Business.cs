@@ -226,6 +226,8 @@ public static class Game_Business {
                 RoleDomain.EnemyTouchAttack(ctx, role, dt);
                 RoleDomain.Enemy_Die(ctx, role);
                 RoleDomain.Enemy_RotateCircle(ctx, role, dt);
+                RoleDomain.isCantactPlayer(ctx, role);
+
             }
 
             RoleFSMConteoller.Tick(ctx, role, dt);
