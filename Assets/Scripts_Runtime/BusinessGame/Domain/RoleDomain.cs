@@ -47,7 +47,7 @@ public static class RoleDomain {
     }
     // // 第二种旋转方式
     // public static void Enemy_RotateCircle2(GameContext ctx, RoleEntity boss, float dt, Vector3 CenterPosition, Vector3 r) {
-        
+
     //     r = boss.transform.position - CenterPosition;//圆心指向boss的向量 也就是半径
     //     r = Quaternion.AngleAxis(3 * dt, new Vector3(0, 0, 1)) * r;
     //     boss.transform.position = CenterPosition + r;
@@ -56,7 +56,7 @@ public static class RoleDomain {
 
     // // 第三种旋转方式
     // public static void Enemy_RotateCircle3(GameContext ctx, RoleEntity boss, float dt, Vector3 CenterPosition, Vector3 r) {
-        
+
     // }
     // player 死亡的函数//相当于游戏结束
     public static void Player_Die(GameContext ctx, RoleEntity role) {
@@ -144,6 +144,18 @@ public static class RoleDomain {
             }
         }
 
+    }
+
+    //  boss 生产小怪 间隔生产
+    public static void BossSpawnEnemy(GameContext ctx,RoleEntity boss, float dt) {
+     
+        // boss.intervalTimer -= dt;
+        // if (boss.intervalTimer <= 0) {
+        //     RoleEntity enemy = RoleDomain.Spawn(ctx, boss.transform.position, RoleConst.ENEMY_2);
+        //     boss.intervalTimer = boss.interval;
+        //     ctx.gameEntity.currentEnemyCount++;
+        // }
+    
     }
 
     // enemy 和 player 的大范围的检测 检测到enmey 就会自动攻击

@@ -29,7 +29,6 @@ public static class Game_Business {
             UIApp.Panel_FigureElement_Add(ctx.uiContext, i);
         }
 
-        RoleEntity boss = RoleDomain.Spawn(ctx, new Vector2(3, 3), RoleConst.ENEMY_4);
 
     }
 
@@ -217,7 +216,8 @@ public static class Game_Business {
             } else if (role.typeID == RoleConst.ENEMY_4) {
                 RoleDomain.EnemyTouchAttack(ctx, role, dt);
                 RoleDomain.Enemy_Die(ctx, role);
-                RoleDomain.Enemy_RotateCircle(ctx, role, dt);
+                
+                // RoleDomain.Enemy_RotateCircle(ctx, role, dt);
 
             }
 

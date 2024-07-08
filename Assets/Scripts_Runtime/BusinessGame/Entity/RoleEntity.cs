@@ -27,7 +27,7 @@ public class RoleEntity : MonoBehaviour {
     public bool idle_isEntering;
 
 
-    // 子弹的cd
+    // 子弹的cd 和 也可以用作boss 生产小怪的cd
     public float interval;
 
     public float intervalTimer;
@@ -43,7 +43,7 @@ public class RoleEntity : MonoBehaviour {
     public float enemy_Maxhp;
 
 
-    public float angled;
+    // boss 400的
 
 
     public void Ctor() {
