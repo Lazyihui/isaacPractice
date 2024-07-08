@@ -36,6 +36,9 @@ public class GameEntity {
 
     public bool isSpawnChest;
 
+
+    public int bossEnemyCount;
+
     public GameEntity() {
 
     }
@@ -50,6 +53,7 @@ public class GameEntity {
         figureCount = 3;
         currentEnemyCount = 1;
         isEnterLevel = false;
+        bossEnemyCount = 0;
     }
 
     public void NoUpdata() {

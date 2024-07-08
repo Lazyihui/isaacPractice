@@ -41,9 +41,11 @@ public class RoleEntity : MonoBehaviour {
     // enemy 的信息
     public float enemy_Hp;
     public float enemy_Maxhp;
+    
+    public Vector3 CenterPosition;//圆心
 
+    public Vector3 radius;//半径
 
-    // boss 400的
 
 
     public void Ctor() {

@@ -161,7 +161,9 @@ public static class Game_Business {
 
     }
 
+
     public static void Tick(GameContext ctx, float dt) {
+
 
         PreTick(ctx, dt);
 
@@ -171,7 +173,9 @@ public static class Game_Business {
         const float FIX_INTERVAL = 0.02f;
 
         if (restFixTime <= FIX_INTERVAL) {
+
             LogicFix(ctx, FIX_INTERVAL);
+
             restFixTime = 0;
         } else {
             while (restFixTime >= FIX_INTERVAL) {
@@ -216,9 +220,12 @@ public static class Game_Business {
             } else if (role.typeID == RoleConst.ENEMY_4) {
                 RoleDomain.EnemyTouchAttack(ctx, role, dt);
                 RoleDomain.Enemy_Die(ctx, role);
-                
-                // RoleDomain.Enemy_RotateCircle(ctx, role, dt);
+                RoleDomain.BossSpawnEnemy(ctx, role, dt);
 
+            }else if(role.typeID == RoleConst.ENEMY_5){
+                RoleDomain.EnemyTouchAttack(ctx, role, dt);
+                RoleDomain.Enemy_Die(ctx, role);
+                RoleDomain.Enemy_RotateCircle(ctx, role, dt);
             }
 
             RoleFSMConteoller.Tick(ctx, role, dt);

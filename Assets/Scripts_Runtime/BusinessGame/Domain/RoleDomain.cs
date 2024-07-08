@@ -42,8 +42,13 @@ public static class RoleDomain {
     }
     // 绕着圆圈旋转
     // 第一种旋转方式
-    public static void Enemy_RotateCircle(GameContext ctx, RoleEntity boss, float dt) {
-        boss.transform.RotateAround(new Vector3(3, 3, 0) * 1.5f, new Vector3(0, 0, 1), 3 * dt);
+    public static void Enemy_RotateCircle(GameContext ctx, RoleEntity enemy, float dt) {
+        int typeID = enemy.typeID / 100;
+        RoleEntity boss = ctx.roleRespository.Find(boss => boss.typeID == typeID);
+        if (boss == null) {
+            return;
+        }
+        enemy.transform.RotateAround(boss.transform.position , new Vector3(0, 0, 1), 3 * dt);
     }
     // // 第二种旋转方式
     // public static void Enemy_RotateCircle2(GameContext ctx, RoleEntity boss, float dt, Vector3 CenterPosition, Vector3 r) {
@@ -147,15 +152,26 @@ public static class RoleDomain {
     }
 
     //  boss 生产小怪 间隔生产
-    public static void BossSpawnEnemy(GameContext ctx,RoleEntity boss, float dt) {
-     
+    public static void BossSpawnEnemy(GameContext ctx, RoleEntity boss, float dt) {
+
+        boss.intervalTimer -= dt;
+
+        if (boss.intervalTimer <= 0) {
+            Debug.Log("生成小怪");
+            Vector3 pos = Vector3.zero;
+            pos.x = Mathf.Sin(30 / 360 * Mathf.Deg2Rad) * 3;
+            pos.y = Mathf.Cos(30 / 360 * Mathf.Deg2Rad) * 3;
+
+            RoleEntity enemy = RoleDomain.Spawn(ctx, pos, RoleConst.ENEMY_5);
+            boss.intervalTimer = boss.interval;
+        }
         // boss.intervalTimer -= dt;
         // if (boss.intervalTimer <= 0) {
         //     RoleEntity enemy = RoleDomain.Spawn(ctx, boss.transform.position, RoleConst.ENEMY_2);
         //     boss.intervalTimer = boss.interval;
         //     ctx.gameEntity.currentEnemyCount++;
         // }
-    
+
     }
 
     // enemy 和 player 的大范围的检测 检测到enmey 就会自动攻击

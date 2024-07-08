@@ -7,6 +7,10 @@ public class RoleTM : ScriptableObject {
     public int typeID;
     public float moveSpeed;
 
+    public float interval;
+
+    public float intervalTimer;
+
     [Header("Enemy_1")]
 
     
@@ -20,10 +24,6 @@ public class RoleTM : ScriptableObject {
 
     public bool isRole;
 
-
-    public float interval;
-
-    public float intervalTimer;
 
     // public int qqq;
     [Header("Animator")]
