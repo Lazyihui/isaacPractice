@@ -40,6 +40,11 @@ public static class RoleDomain {
         return role;
 
     }
+    // 绕着圆圈旋转
+    public static void Enemy_RotateCircle(GameContext ctx, RoleEntity boss,float dt) {
+        boss.transform.RotateAround(new Vector3(3, 3, 0)*1.5f, new Vector3(0, 0, 1), 3*dt);
+        Debug.Log(boss.transform.position);
+    }
     // player 死亡的函数//相当于游戏结束
     public static void Player_Die(GameContext ctx, RoleEntity role) {
         if (ctx.gameEntity.hp <= 0) {
