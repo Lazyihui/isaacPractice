@@ -42,6 +42,10 @@ public class RoleEntity : MonoBehaviour {
     public float enemy_Hp;
     public float enemy_Maxhp;
 
+
+    public float angled;
+
+
     public void Ctor() {
         isInvincible = true;
         invincibleTimer = 1.5f;

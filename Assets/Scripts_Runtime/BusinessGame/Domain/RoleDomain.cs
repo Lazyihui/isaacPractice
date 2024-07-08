@@ -41,10 +41,23 @@ public static class RoleDomain {
 
     }
     // 绕着圆圈旋转
-    public static void Enemy_RotateCircle(GameContext ctx, RoleEntity boss,float dt) {
-        boss.transform.RotateAround(new Vector3(3, 3, 0)*1.5f, new Vector3(0, 0, 1), 3*dt);
-        Debug.Log(boss.transform.position);
+    // 第一种旋转方式
+    public static void Enemy_RotateCircle(GameContext ctx, RoleEntity boss, float dt) {
+        boss.transform.RotateAround(new Vector3(3, 3, 0) * 1.5f, new Vector3(0, 0, 1), 3 * dt);
     }
+    // // 第二种旋转方式
+    // public static void Enemy_RotateCircle2(GameContext ctx, RoleEntity boss, float dt, Vector3 CenterPosition, Vector3 r) {
+        
+    //     r = boss.transform.position - CenterPosition;//圆心指向boss的向量 也就是半径
+    //     r = Quaternion.AngleAxis(3 * dt, new Vector3(0, 0, 1)) * r;
+    //     boss.transform.position = CenterPosition + r;
+
+    // }
+
+    // // 第三种旋转方式
+    // public static void Enemy_RotateCircle3(GameContext ctx, RoleEntity boss, float dt, Vector3 CenterPosition, Vector3 r) {
+        
+    // }
     // player 死亡的函数//相当于游戏结束
     public static void Player_Die(GameContext ctx, RoleEntity role) {
         if (ctx.gameEntity.hp <= 0) {

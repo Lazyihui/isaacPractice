@@ -216,8 +216,9 @@ public static class Game_Business {
                 RoleDomain.Enemy_Die(ctx, role);
             } else if (role.typeID == RoleConst.ENEMY_4) {
                 RoleDomain.EnemyTouchAttack(ctx, role, dt);
-                RoleDomain.Enemy_Die(ctx, role);    
+                RoleDomain.Enemy_Die(ctx, role);
                 RoleDomain.Enemy_RotateCircle(ctx, role, dt);
+
             }
 
             RoleFSMConteoller.Tick(ctx, role, dt);
