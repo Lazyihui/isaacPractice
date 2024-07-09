@@ -12,7 +12,7 @@ public static class RoleConst {
     public const int ENEMY_3 = 2000;
 
     // boss
-    public const int ENEMY_4 = 30;
+    public const int BOSS_4 = 30;
 
     public const int ENEMY_5 = 3000;
 

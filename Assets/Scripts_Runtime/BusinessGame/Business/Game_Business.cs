@@ -148,9 +148,10 @@ public static class Game_Business {
         RoleDomain.Spawn(ctx, pos, RoleConst.PLAYER);
         MapDomain.Spawn(ctx, 3);
         PropDomain.ToSpawnIsTriggerProp(ctx);
-        RoleEntity boss = RoleDomain.Spawn(ctx, new Vector2(3, 3), RoleConst.ENEMY_4);
+        RoleEntity boss = RoleDomain.Spawn(ctx, new Vector2(3, 3), RoleConst.BOSS_4);
         UIApp.Panel_BossedHeart_Open(ctx.uiContext, boss.enemy_Hp, boss.enemy_Maxhp);
         ctx.gameEntity.currentEnemyCount = 100;
+
     }
 
 
@@ -217,10 +218,12 @@ public static class Game_Business {
                 RoleDomain.moveToPlayer(ctx, role, dt);
                 RoleDomain.EnemyTouchAttack(ctx, role, dt);
                 RoleDomain.Enemy_Die(ctx, role);
-            } else if (role.typeID == RoleConst.ENEMY_4) {
+            } else if (role.typeID == RoleConst.BOSS_4) {
                 RoleDomain.EnemyTouchAttack(ctx, role, dt);
                 RoleDomain.Enemy_Die(ctx, role);
                 RoleDomain.BossSpawnEnemy(ctx, role, dt);
+                // RoleDomain.moveToPlayer(ctx, role, dt);
+
 
             }else if(role.typeID == RoleConst.ENEMY_5){
                 RoleDomain.EnemyTouchAttack(ctx, role, dt);
@@ -303,7 +306,7 @@ public static class Game_Business {
     static void LateTick(GameContext ctx, float dt) {
         UIApp.Panel_Heart_Unpdate(ctx.uiContext, ctx.gameEntity.hp);
 
-        RoleEntity boss = ctx.roleRespository.Find(x => x.typeID == RoleConst.ENEMY_4);
+        RoleEntity boss = ctx.roleRespository.Find(x => x.typeID == RoleConst.BOSS_4);
         if (boss != null) {
             UIApp.Panel_BossedHeart_Update(ctx.uiContext, boss.enemy_Hp, boss.enemy_Maxhp);
         }
