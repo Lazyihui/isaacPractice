@@ -150,7 +150,7 @@ public static class Game_Business {
         PropDomain.ToSpawnIsTriggerProp(ctx);
         RoleEntity boss = RoleDomain.Spawn(ctx, new Vector2(3, 3), RoleConst.ENEMY_4);
         UIApp.Panel_BossedHeart_Open(ctx.uiContext, boss.enemy_Hp, boss.enemy_Maxhp);
-
+        ctx.gameEntity.currentEnemyCount = 100;
     }
 
 
@@ -227,7 +227,6 @@ public static class Game_Business {
                 RoleDomain.Enemy_Die(ctx, role);
                 RoleDomain.Enemy_RotateCircle(ctx, role, dt);
                 RoleDomain.isCantactPlayer(ctx, role);
-
             }
 
             RoleFSMConteoller.Tick(ctx, role, dt);
