@@ -40,7 +40,6 @@ public class GameEntity {
     public int bossEnemyCount;
 
     // 
-    public Vector3 radius;
 
     public GameEntity() {
 
@@ -57,7 +56,6 @@ public class GameEntity {
         currentEnemyCount = 1;
         isEnterLevel = false;
         bossEnemyCount = 0;
-        radius = new Vector3(2, 0, 0);
     }
 
     public void NoUpdata() {

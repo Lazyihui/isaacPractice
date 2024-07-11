@@ -62,9 +62,10 @@ public static class RoleDomain {
 
     // 第二种旋转方式
     public static void Enemy_RotateCircle2(GameContext ctx, RoleEntity enemy, float round, float dt) {
+
         RoleEntity boss = ctx.roleRespository.Find(enemy => enemy.typeID == RoleConst.BOSS_4);
-        ctx.gameEntity.radius = Quaternion.AngleAxis(round * dt, Vector3.forward) * ctx.gameEntity.radius;
-        Vector3 newPos = boss.transform.position + ctx.gameEntity.radius;
+        enemy.radius = Quaternion.AngleAxis(round * dt, Vector3.forward) * enemy.radius;
+        Vector3 newPos = boss.transform.position + enemy.radius;
         enemy.transform.position = newPos;
 
     }
@@ -194,6 +195,7 @@ public static class RoleDomain {
 
             Vector3 pos = new Vector3(boss.transform.position.x + 2, boss.transform.position.y, boss.transform.position.z);
             RoleEntity enemy = RoleDomain.Spawn(ctx, pos, RoleConst.ENEMY_5);
+            enemy.radius = enemy.transform.position - boss.transform.position;
             boss.intervalTimer = boss.interval;
 
 

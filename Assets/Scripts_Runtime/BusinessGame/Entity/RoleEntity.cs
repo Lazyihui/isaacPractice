@@ -47,6 +47,7 @@ public class RoleEntity : MonoBehaviour {
 
     public bool isRecordVector;
 
+    public Vector3 radius;
 
     public void Ctor() {
         isInvincible = true;

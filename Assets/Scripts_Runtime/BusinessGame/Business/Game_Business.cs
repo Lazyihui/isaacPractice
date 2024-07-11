@@ -229,7 +229,7 @@ public static class Game_Business {
                 RoleDomain.EnemyTouchAttack(ctx, role, dt);
                 RoleDomain.Enemy_Die(ctx, role);
                 // RoleDomain.Enemy_RotateCircle(ctx, role, dt);
-                RoleDomain.Enemy_RotateCircle2(ctx, role,10, dt);
+                RoleDomain.Enemy_RotateCircle2(ctx, role,5, dt);
                 RoleDomain.isCantactPlayer(ctx, role);
             }
 
