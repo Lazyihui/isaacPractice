@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: TM_4Enemy_Boss
   m_EditorClassIdentifier: 
   typeID: 30
-  moveSpeed: 2
+  moveSpeed: 1
   interval: 30
   intervalTimer: 30
   isEnemy_1: 1

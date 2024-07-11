@@ -45,12 +45,14 @@ public class RoleEntity : MonoBehaviour {
     // 小怪的信息
     public bool isCantactPlayer;
 
+    public bool isRecordVector;
 
 
     public void Ctor() {
         isInvincible = true;
         isCantactPlayer = false;
         invincibleTimer = 1.5f;
+        isRecordVector = false;
     }
 
 

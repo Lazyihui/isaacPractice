@@ -60,6 +60,15 @@ public static class RoleDomain {
         }
     }
 
+    // 第二种旋转方式
+    public static void Enemy_RotateCircle2(GameContext ctx, RoleEntity enemy, float round, float dt) {
+        RoleEntity boss = ctx.roleRespository.Find(enemy => enemy.typeID == RoleConst.BOSS_4);
+        ctx.gameEntity.radius = Quaternion.AngleAxis(round * dt, Vector3.forward) * ctx.gameEntity.radius;
+        Vector3 newPos = boss.transform.position + ctx.gameEntity.radius;
+        enemy.transform.position = newPos;
+
+    }
+
     // 小怪在一定范围内移动
     public static void isCantactPlayer(GameContext ctx, RoleEntity enemy) {
         RoleEntity player = ctx.roleRespository.Find(player => player.typeID == RoleConst.PLAYER);

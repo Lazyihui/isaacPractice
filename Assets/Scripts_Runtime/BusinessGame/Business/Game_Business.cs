@@ -222,13 +222,14 @@ public static class Game_Business {
                 RoleDomain.EnemyTouchAttack(ctx, role, dt);
                 RoleDomain.Enemy_Die(ctx, role);
                 RoleDomain.BossSpawnEnemy(ctx, role, dt);
-                // RoleDomain.moveToPlayer(ctx, role, dt);
+                RoleDomain.moveToPlayer(ctx, role, dt);
 
 
             }else if(role.typeID == RoleConst.ENEMY_5){
                 RoleDomain.EnemyTouchAttack(ctx, role, dt);
                 RoleDomain.Enemy_Die(ctx, role);
-                RoleDomain.Enemy_RotateCircle(ctx, role, dt);
+                // RoleDomain.Enemy_RotateCircle(ctx, role, dt);
+                RoleDomain.Enemy_RotateCircle2(ctx, role,10, dt);
                 RoleDomain.isCantactPlayer(ctx, role);
             }
 
