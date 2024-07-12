@@ -12,7 +12,7 @@ public static class Game_Business {
         RoleDomain.Spawn(ctx, new Vector2(0, 0), RoleConst.PLAYER);
 
         // map
-        MapDomain.Spawn(ctx, 1);
+        MapDomain.Spawn(ctx, 2);
 
         PropDomain.ToSpawnIsTriggerProp(ctx);
 
@@ -268,10 +268,12 @@ public static class Game_Business {
         }
 
         if (ctx.gameEntity.currentEnemyCount == 0) {
-            
+
             ctx.gameEntity.isSpawnChest = true;
+            MapDomain.CloseAll(ctx);
+            MapDomain.Spawn(ctx, 2);
             ctx.gameEntity.currentEnemyCount = 1;
-            
+
         }
 
 
@@ -279,7 +281,7 @@ public static class Game_Business {
 
             PropDomain.Spawn(ctx, new Vector2(3, 1), PropConst.CHEST, 0);
             ctx.gameEntity.isSpawnChest = false;
-            
+
         }
 
 
@@ -290,11 +292,11 @@ public static class Game_Business {
             BulletDomain.CloseAll(ctx);
             PropDomain.CloseAll(ctx);
             MapDomain.CloseAll(ctx);
-            if (ctx.gameEntity.nextLevelID == 2) {
+            if (ctx.gameEntity.LevelID == 1) {
                 Next_Level_hasEnemy_1(ctx);
-            } else if (ctx.gameEntity.nextLevelID == 1) {
+            } else if (ctx.gameEntity.LevelID == 2) {
                 Next_Level_hasEnemy_2(ctx);
-            } else if (ctx.gameEntity.nextLevelID == 3) {
+            } else if (ctx.gameEntity.LevelID == 3) {
                 Next_Level_Boss(ctx);
             } else {
                 Next_Level(ctx);

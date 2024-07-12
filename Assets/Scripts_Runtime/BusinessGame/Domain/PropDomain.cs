@@ -99,6 +99,7 @@ public static class PropDomain {
             float dirSqr = Vector2.SqrMagnitude(role.transform.position - prop.transform.position);
             if (dirSqr < 0.5f) {
                 ctx.gameEntity.isEnterLevel = true;
+                ctx.gameEntity.LevelID += 1;
                 switch (prop.nextLevelID) {
                     case 1:
                         ctx.gameEntity.nextLevelID = 1;

@@ -39,7 +39,8 @@ public class GameEntity {
 
     public int bossEnemyCount;
 
-    // 
+    // 暂时没有随机关卡一关一关加
+    public int LevelID;
 
     public GameEntity() {
 
@@ -63,6 +64,7 @@ public class GameEntity {
         goldCount = 3;
         bombCount = 0;
         keyCount = 0;
+        LevelID = 0;
     }
 
 }
