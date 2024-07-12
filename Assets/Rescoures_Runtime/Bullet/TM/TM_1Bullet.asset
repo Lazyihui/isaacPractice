@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 639a65ddcf102534083a598882ff601b, type: 3}
   m_Name: TM_1Bullet
   m_EditorClassIdentifier: 
-  moveSpeed: 0.5
+  moveSpeed: 0.8
   intervalTimer: 15
-  interval: 15
   isRoleBullet: 0
   typeID: 1
   moveDistance: 0

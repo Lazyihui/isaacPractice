@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   typeID: 200
   moveSpeed: 3
+  interval: 0
+  intervalTimer: 0
   isEnemy_1: 1
   enmeny_1_Hp: 3
   enemy_Maxhp: 3
   isRole: 0
-  interval: 0
-  intervalTimer: 0
   animator: {fileID: 9100000, guid: 18efb818b1d66404ca0f13e7d3a719c4, type: 2}
   sprite: {fileID: 5986909737524308568, guid: 711533ab388b29d4c834314226cec5ec, type: 3}

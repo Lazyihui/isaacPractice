@@ -198,7 +198,7 @@ public static class Game_Business {
         for (int i = 0; i < roleLen; i++) {
             RoleEntity role = roles[i];
 
-            if (role.isRole) {
+            if (role.typeID == RoleConst.PLAYER) {
 
                 RoleDomain.Move(ctx, role, ctx.moduleInput.moveAxis, dt);
                 RoleDomain.ToSpawnBullet(ctx, role, dt);
