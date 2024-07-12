@@ -16,9 +16,6 @@ public static class Game_Business {
 
         PropDomain.ToSpawnIsTriggerProp(ctx);
 
-        PropDomain.Spawn(ctx, new Vector2(-3, 1), 1, 0);
-
-
         // 打开panel
         UIApp.Panel_Heart_Open(ctx.uiContext, 3);
 
@@ -46,9 +43,8 @@ public static class Game_Business {
         }
         ctx.gameEntity.Init();
         RoleDomain.Spawn(ctx, pos, RoleConst.PLAYER);
-        MapDomain.Spawn(ctx, 2);
+        MapDomain.Spawn(ctx, 1);
         PropDomain.Spawn(ctx, new Vector2(3, 1), PropConst.CHEST, 0);
-
         PropDomain.ToSpawnIsTriggerProp(ctx);
 
     }
@@ -68,7 +64,7 @@ public static class Game_Business {
 
         ctx.gameEntity.Init();
         RoleDomain.Spawn(ctx, pos, RoleConst.PLAYER);
-        MapDomain.Spawn(ctx, 3);
+        MapDomain.Spawn(ctx, 1);
         // 左上角
         PropDomain.Spawn(ctx, new Vector2(-11.5f, 7), PropConst.OBSTACLE, 0);
         PropDomain.Spawn(ctx, new Vector2(-11.5f, 6), PropConst.OBSTACLE, 0);
@@ -126,7 +122,7 @@ public static class Game_Business {
 
         ctx.gameEntity.Init();
         RoleDomain.Spawn(ctx, pos, RoleConst.PLAYER);
-        MapDomain.Spawn(ctx, 3);
+        MapDomain.Spawn(ctx, 1);
         PropDomain.ToSpawnIsTriggerProp(ctx);
         RoleDomain.Spawn(ctx, new Vector2(3, 3), RoleConst.ENEMY_2);
         ctx.gameEntity.currentEnemyCount = 2;
@@ -146,7 +142,7 @@ public static class Game_Business {
         }
         ctx.gameEntity.Init();
         RoleDomain.Spawn(ctx, pos, RoleConst.PLAYER);
-        MapDomain.Spawn(ctx, 3);
+        MapDomain.Spawn(ctx, 1);
         PropDomain.ToSpawnIsTriggerProp(ctx);
         RoleEntity boss = RoleDomain.Spawn(ctx, new Vector2(3, 3), RoleConst.BOSS_4);
         UIApp.Panel_BossedHeart_Open(ctx.uiContext, boss.enemy_Hp, boss.enemy_Maxhp);
@@ -272,14 +268,18 @@ public static class Game_Business {
         }
 
         if (ctx.gameEntity.currentEnemyCount == 0) {
+            
             ctx.gameEntity.isSpawnChest = true;
             ctx.gameEntity.currentEnemyCount = 1;
+            
         }
 
 
         if (ctx.gameEntity.isSpawnChest) {
+
             PropDomain.Spawn(ctx, new Vector2(3, 1), PropConst.CHEST, 0);
             ctx.gameEntity.isSpawnChest = false;
+            
         }
 
 

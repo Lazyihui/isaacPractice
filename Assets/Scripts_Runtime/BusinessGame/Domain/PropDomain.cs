@@ -56,8 +56,6 @@ public static class PropDomain {
             prop.SetCollider(false);
         }
 
-
-
     }
 
     public static void ToSpawnIsTriggerProp(GameContext ctx) {
