@@ -167,7 +167,7 @@ public static class Game_Business {
         ref float restFixTime = ref ctx.gameEntity.restFixTime;
 
         restFixTime += dt;
-        const float FIX_INTERVAL = 0.02f;
+        const float FIX_INTERVAL = 0.2f;
 
         if (restFixTime <= FIX_INTERVAL) {
 
