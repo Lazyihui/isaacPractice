@@ -110,5 +110,5 @@ public static class UIApp {
         }
         panel.SetHp(hp, hpMax);
     }
-    
+
 }
