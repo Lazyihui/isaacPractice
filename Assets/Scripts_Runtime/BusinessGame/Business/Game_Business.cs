@@ -171,7 +171,7 @@ public static class Game_Business {
 
         if (restFixTime <= FIX_INTERVAL) {
 
-            LogicFix(ctx, FIX_INTERVAL);
+            LogicFix(ctx, restFixTime);
 
             restFixTime = 0;
         } else {
